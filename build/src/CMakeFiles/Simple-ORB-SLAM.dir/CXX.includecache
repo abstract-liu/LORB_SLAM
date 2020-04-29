@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/abstract/Simple-ORB-SLAM/include/camera.h
+common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
+
+/home/abstract/Simple-ORB-SLAM/include/common.h
+opencv2/opencv.hpp
+-
+opencv2/highgui.hpp
+-
+opencv2/core/core.hpp
+-
+iostream
+-
+vector
+-
+memory
+-
+string
+-
+
+/home/abstract/Simple-ORB-SLAM/include/config.h
+common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
+
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
+
+/home/abstract/Simple-ORB-SLAM/src/main.cpp
+../include/common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
+../include/frame.h
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+../include/camera.h
+/home/abstract/Simple-ORB-SLAM/include/camera.h
+../include/config.h
+/home/abstract/Simple-ORB-SLAM/include/config.h
+
