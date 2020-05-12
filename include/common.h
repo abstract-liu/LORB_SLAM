@@ -14,6 +14,7 @@ using namespace cv;
 
 #include <ceres/ceres.h>
 
+
 #include <list>
 #include <map>
 #include <iostream>

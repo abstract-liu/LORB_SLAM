@@ -6,8 +6,10 @@
 #include "frame.h"
 #include "map.h"
 #include "bundle_adjust.h"
+#include "matcher.h"
 
 #include <opencv2/core/types.hpp>
+#include <vector>
 
 namespace Simple_ORB_SLAM
 {  
@@ -26,22 +28,28 @@ public:
 protected:
 	
 	void Initialize();
-	void PnPMatchFeature();
+	
+	//track
+	bool EstimatePoseMotion();
 	bool EstimatePosePnP();
-	void UpdatePnP();
+	bool EstimatePoseLocal();
 
-	void LocalMatchFeature();
+	//aid function
+	void UpdatePrevFrame();
+	void UpdateLocalMap();
+
+	//add key frame
+	void AddKeyFrame();
+
 	void UpdateMap();
 
 	void Rotation2Quaternion();
 	void SaveTrajectory();
 
-	void EstimatePoseMotion();
 
 
 public:
-	Map* mpGlobalMap;
-	Map* mpLocalMap;
+	Map* mpMap;
 
 private:
 	
@@ -50,18 +58,17 @@ private:
 	bool isFistFrame;
 	
 	//last frame and current frame
-	cv::Mat mCurrImg, mPrevImg;
 	Frame* mPrevFrame; 
 	Frame* mCurrFrame;
-	
-	//last frame and current frame key points
-	vector<cv::Point2f> mPrevKps2d;
-	vector<cv::Point2f> mCurrKps2d;
-	vector<cv::Point3f> mPrevKps3d;
+	Frame* mReferFrame;
+
+	//local map
+	std::vector<Frame*> mpLocalKeyFrames;
+	std::set<MapPoint*> mpLocalMapPoints;
+		
 
 	//pose variables
-	Mat mTcw, mTcc, mTwt;
-	Mat mRvec, mTvec;
+	cv::Mat mTcc;
 	float mTUM[7];
 
 	//pose lock

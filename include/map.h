@@ -15,24 +15,25 @@ class Map
 public:
 	Map();
 
-	void AddMapPoint(MapPoint* mapPoint);
-	void AddKeyFrame(Frame* keyFrame);
+	//map point
+	void AddMapPoint(MapPoint* pMP);
+	void EraseMapPoint(MapPoint* pMP);
+	std::set<MapPoint*> GetPoints();
 	
-	std::vector<Frame*> GetKeyFrames();
-	std::vector<MapPoint*> GetPoints();
 
-	void EraseBadPoints();
+	//key frame
+	void AddFrame(Frame* pF);
+	void EraseFrame(Frame* pF);
+	std::set<Frame*> GetFrames();
 
-	size_t mKFN;
-	size_t mMPN;
+
 
 public:
-	std::vector<int> mUnSeenTimes;
 
 
 private:
-	std::vector<MapPoint*> mpMapPoints;
-	std::vector<Frame*> mpKeyFrames;
+	std::set<MapPoint*> mspMapPoints;
+	std::set<Frame*> mspFrames;
 
 	std::mutex mPointLock;
 	std::mutex mFrameLock;

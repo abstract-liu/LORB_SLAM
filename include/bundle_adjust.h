@@ -13,9 +13,10 @@ class BA
 {
 public:
 	BA();
-	void static PnpPoseAdjust(const vector<cv::Point3f>& kps3d, const vector<cv::Point2f>& kps2d, cv::Mat& R, cv::Mat& T, Camera* camera);
-	void static LocalPoseAdjust(const vector<cv::Point3f>& kps3d, const vector<cv::Point2f>& kps2d, cv::Mat& R, cv::Mat& T, Camera* camera);
-
+	
+	void static ProjectPoseOptimization(Frame* curr);
+	
+	void static LocalPoseOptimization(Frame* pCurrFrame);
 
 };
 
