@@ -206,6 +206,33 @@ frame.cpp.s:
 	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/frame.cpp.s
 .PHONY : frame.cpp.s
 
+local_mapping.o: local_mapping.cpp.o
+
+.PHONY : local_mapping.o
+
+# target to build an object file
+local_mapping.cpp.o:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/local_mapping.cpp.o
+.PHONY : local_mapping.cpp.o
+
+local_mapping.i: local_mapping.cpp.i
+
+.PHONY : local_mapping.i
+
+# target to preprocess a source file
+local_mapping.cpp.i:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/local_mapping.cpp.i
+.PHONY : local_mapping.cpp.i
+
+local_mapping.s: local_mapping.cpp.s
+
+.PHONY : local_mapping.s
+
+# target to generate assembly for a file
+local_mapping.cpp.s:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/local_mapping.cpp.s
+.PHONY : local_mapping.cpp.s
+
 map.o: map.cpp.o
 
 .PHONY : map.o
@@ -259,6 +286,33 @@ map_point.s: map_point.cpp.s
 map_point.cpp.s:
 	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/map_point.cpp.s
 .PHONY : map_point.cpp.s
+
+matcher.o: matcher.cpp.o
+
+.PHONY : matcher.o
+
+# target to build an object file
+matcher.cpp.o:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/matcher.cpp.o
+.PHONY : matcher.cpp.o
+
+matcher.i: matcher.cpp.i
+
+.PHONY : matcher.i
+
+# target to preprocess a source file
+matcher.cpp.i:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/matcher.cpp.i
+.PHONY : matcher.cpp.i
+
+matcher.s: matcher.cpp.s
+
+.PHONY : matcher.s
+
+# target to generate assembly for a file
+matcher.cpp.s:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/matcher.cpp.s
+.PHONY : matcher.cpp.s
 
 viewer.o: viewer.cpp.o
 
@@ -332,12 +386,18 @@ help:
 	@echo "... frame.o"
 	@echo "... frame.i"
 	@echo "... frame.s"
+	@echo "... local_mapping.o"
+	@echo "... local_mapping.i"
+	@echo "... local_mapping.s"
 	@echo "... map.o"
 	@echo "... map.i"
 	@echo "... map.s"
 	@echo "... map_point.o"
 	@echo "... map_point.i"
 	@echo "... map_point.s"
+	@echo "... matcher.o"
+	@echo "... matcher.i"
+	@echo "... matcher.s"
 	@echo "... viewer.o"
 	@echo "... viewer.i"
 	@echo "... viewer.s"

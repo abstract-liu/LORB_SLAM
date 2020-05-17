@@ -10,6 +10,9 @@
 namespace Simple_ORB_SLAM
 { 
 
+class MapPoint;
+class Map;
+
 class Frame
 {
 public:
@@ -28,7 +31,8 @@ public:
 	cv::Mat GetPose();
 	cv::Mat GetInvPose();
 	
-	//Kps
+	//key points
+	cv::Point2f GetKp2d(size_t i);
 	std::vector<cv::Point2f> GetKps2d();
 	std::vector<cv::Point3f> GetKps3d();
 
@@ -58,15 +62,6 @@ public:
 	void AddConnection(Frame* pF, size_t weight);
 
 
-	//spanning tree
-	void EraseChild(Frame* pF);
-	void AddChild(Frame* pF);
-	std::set<Frame*> GetChildren();
-	void ChangeParent(Frame* pF);
-	Frame* GetParent();
-
-
-
 
 public:
 	static size_t Idx;
@@ -79,7 +74,7 @@ public:
 	Camera* mpCamera;
 
 	//camera's pose
-	cv::Mat mTcw, mTwc;
+	cv::Mat mTcw;
 	cv::Mat mTvec, mRvec;
 
 
@@ -111,10 +106,6 @@ private:
 	std::map<Frame*, size_t> mConnectedKeyFrameWeights;
 	std::vector<Frame*> mvpOrderedKeyFrames;
 	std::vector<size_t> mvOrderedWeights;
-
-	//spanning tree
-	Frame* mpParent;
-	std::set<Frame*> mspChildren;
 
 };
 

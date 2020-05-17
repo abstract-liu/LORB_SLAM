@@ -5,11 +5,11 @@
 #include "camera.h"
 #include "frame.h"
 #include "map.h"
+#include "map_point.h"
 #include "bundle_adjust.h"
 #include "matcher.h"
+#include "local_mapping.h"
 
-#include <opencv2/core/types.hpp>
-#include <vector>
 
 namespace Simple_ORB_SLAM
 {  
@@ -17,12 +17,11 @@ namespace Simple_ORB_SLAM
 class VisualOdometry
 {
 public:
-	VisualOdometry(const string& strParaFile, Camera* camera, Map* map);
+	VisualOdometry(LocalMapping* lcMapper, Camera* camera, Map* map);
 	~VisualOdometry();
 
 	void Run(const string& timeStamp, const cv::Mat& imgLeft, const cv::Mat& imgRight);
-
-	//api
+	
 	cv::Mat GetCurrInvPos();
 
 protected:
@@ -30,12 +29,12 @@ protected:
 	void Initialize();
 	
 	//track
-	bool EstimatePoseMotion();
+	bool EstimatePoseMotion(Frame* pF);
 	bool EstimatePosePnP();
 	bool EstimatePoseLocal();
 
 	//aid function
-	void UpdatePrevFrame();
+	void UpdateFrame(Frame* pF);
 	void UpdateLocalMap();
 
 	//add key frame
@@ -43,7 +42,6 @@ protected:
 
 	void UpdateMap();
 
-	void Rotation2Quaternion();
 	void SaveTrajectory();
 
 
@@ -54,6 +52,7 @@ public:
 private:
 	
 	Camera* mpCamera;
+	LocalMapping* mpLocalMapper;	
 
 	bool isFistFrame;
 	
@@ -68,7 +67,7 @@ private:
 		
 
 	//pose variables
-	cv::Mat mTcc;
+	cv::Mat mTcc, mTwc;
 	float mTUM[7];
 
 	//pose lock

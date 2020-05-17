@@ -6,12 +6,11 @@ namespace Simple_ORB_SLAM
 {
 
 	
-MapPoint::MapPoint(const cv::Point3f& pt, const cv::Mat& descriptor, const Frame* pF, Map* pMap)
+MapPoint::MapPoint(cv::Point3f pt, Frame* pF, Map* pMap)
 {
 	mWorldPos = pt;
-	mDescriptor = descriptor.clone();
 	
-	mnFirstFId = pF->mId;
+	mnFirstFId = pF->mnId;
 	mnObs = 0;
 
 	mbBadFlag = false;
@@ -43,16 +42,24 @@ cv::Mat MapPoint::GetDescriptor()
 void MapPoint::ComputeDescriptor()
 {
 	std::vector<cv::Mat> vDescriptors;
+	
 
 	for(std::map<Frame*, size_t>::iterator it = mObservations.begin(); it != mObservations.end(); it++)
-	{
-		cv::Mat descriptor = it->first->GetDescriptor(it->second);
+	{	
+		Frame* pF = it->first;
+		if(pF->IsBad() == true)
+			continue;
+		cv::Mat descriptor = pF->GetDescriptor(it->second);
 		vDescriptors.push_back(descriptor);
 	}
 	
+	//warning vector need to resize first
 	std::vector<std::vector<int>> distances;
+	distances.resize(vDescriptors.size(), std::vector<int>(vDescriptors.size(),0));
+
 	for(size_t i=0; i<vDescriptors.size(); i++)
 	{
+		distances[i][i] = 0;
 		for(size_t j=i+1; j<vDescriptors.size(); j++)
 		{
 
@@ -90,6 +97,7 @@ void MapPoint::ComputeDescriptor()
 	}
 
 	mDescriptor = vDescriptors[bestIdx].clone();
+
 
 }
 

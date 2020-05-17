@@ -14,7 +14,7 @@ using namespace cv;
 
 #include <ceres/ceres.h>
 
-
+#include <mutex>
 #include <list>
 #include <map>
 #include <iostream>

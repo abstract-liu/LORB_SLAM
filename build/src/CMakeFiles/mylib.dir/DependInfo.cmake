@@ -7,8 +7,10 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o"
   "/home/abstract/Simple-ORB-SLAM/src/camera.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/camera.cpp.o"
   "/home/abstract/Simple-ORB-SLAM/src/frame.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/frame.cpp.o"
+  "/home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/local_mapping.cpp.o"
   "/home/abstract/Simple-ORB-SLAM/src/map.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/map.cpp.o"
   "/home/abstract/Simple-ORB-SLAM/src/map_point.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/map_point.cpp.o"
+  "/home/abstract/Simple-ORB-SLAM/src/matcher.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/matcher.cpp.o"
   "/home/abstract/Simple-ORB-SLAM/src/viewer.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/viewer.cpp.o"
   "/home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp" "/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir/visual_odometry.cpp.o"
   )

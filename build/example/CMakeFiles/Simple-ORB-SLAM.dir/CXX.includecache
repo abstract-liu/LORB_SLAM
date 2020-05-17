@@ -55,6 +55,8 @@ opencv2/features2d.hpp
 -
 ceres/ceres.h
 -
+mutex
+-
 list
 -
 map
@@ -73,16 +75,24 @@ fstream
 /home/abstract/Simple-ORB-SLAM/include/frame.h
 common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
+map.h
+/home/abstract/Simple-ORB-SLAM/include/map.h
 map_point.h
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
-opencv2/core/mat.hpp
--
-opencv2/core/types.hpp
--
-vector
--
 camera.h
 /home/abstract/Simple-ORB-SLAM/include/camera.h
+
+/home/abstract/Simple-ORB-SLAM/include/local_mapping.h
+frame.h
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+bundle_adjust.h
+/home/abstract/Simple-ORB-SLAM/include/bundle_adjust.h
+map_point.h
+/home/abstract/Simple-ORB-SLAM/include/map_point.h
+map.h
+/home/abstract/Simple-ORB-SLAM/include/map.h
+common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
 
 /home/abstract/Simple-ORB-SLAM/include/map.h
 common.h
@@ -91,14 +101,22 @@ map_point.h
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
 frame.h
 /home/abstract/Simple-ORB-SLAM/include/frame.h
-mutex
--
-vector
--
 
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
 common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
+frame.h
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+map.h
+/home/abstract/Simple-ORB-SLAM/include/map.h
+
+/home/abstract/Simple-ORB-SLAM/include/matcher.h
+common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
+frame.h
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+vector
+-
 
 /home/abstract/Simple-ORB-SLAM/include/viewer.h
 common.h
@@ -121,10 +139,14 @@ frame.h
 /home/abstract/Simple-ORB-SLAM/include/frame.h
 map.h
 /home/abstract/Simple-ORB-SLAM/include/map.h
+map_point.h
+/home/abstract/Simple-ORB-SLAM/include/map_point.h
 bundle_adjust.h
 /home/abstract/Simple-ORB-SLAM/include/bundle_adjust.h
-opencv2/core/types.hpp
--
+matcher.h
+/home/abstract/Simple-ORB-SLAM/include/matcher.h
+local_mapping.h
+/home/abstract/Simple-ORB-SLAM/include/local_mapping.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

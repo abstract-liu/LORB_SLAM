@@ -33,6 +33,8 @@ opencv2/features2d.hpp
 -
 ceres/ceres.h
 -
+mutex
+-
 list
 -
 map
@@ -51,16 +53,24 @@ fstream
 /home/abstract/Simple-ORB-SLAM/include/frame.h
 common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
+map.h
+/home/abstract/Simple-ORB-SLAM/include/map.h
 map_point.h
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
-opencv2/core/mat.hpp
--
-opencv2/core/types.hpp
--
-vector
--
 camera.h
 /home/abstract/Simple-ORB-SLAM/include/camera.h
+
+/home/abstract/Simple-ORB-SLAM/include/local_mapping.h
+frame.h
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+bundle_adjust.h
+/home/abstract/Simple-ORB-SLAM/include/bundle_adjust.h
+map_point.h
+/home/abstract/Simple-ORB-SLAM/include/map_point.h
+map.h
+/home/abstract/Simple-ORB-SLAM/include/map.h
+common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
 
 /home/abstract/Simple-ORB-SLAM/include/map.h
 common.h
@@ -69,14 +79,22 @@ map_point.h
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
 frame.h
 /home/abstract/Simple-ORB-SLAM/include/frame.h
-mutex
--
-vector
--
 
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
 common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
+frame.h
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+map.h
+/home/abstract/Simple-ORB-SLAM/include/map.h
+
+/home/abstract/Simple-ORB-SLAM/include/matcher.h
+common.h
+/home/abstract/Simple-ORB-SLAM/include/common.h
+frame.h
+/home/abstract/Simple-ORB-SLAM/include/frame.h
+vector
+-
 
 /home/abstract/Simple-ORB-SLAM/include/viewer.h
 common.h
@@ -99,10 +117,14 @@ frame.h
 /home/abstract/Simple-ORB-SLAM/include/frame.h
 map.h
 /home/abstract/Simple-ORB-SLAM/include/map.h
+map_point.h
+/home/abstract/Simple-ORB-SLAM/include/map_point.h
 bundle_adjust.h
 /home/abstract/Simple-ORB-SLAM/include/bundle_adjust.h
-opencv2/core/types.hpp
--
+matcher.h
+/home/abstract/Simple-ORB-SLAM/include/matcher.h
+local_mapping.h
+/home/abstract/Simple-ORB-SLAM/include/local_mapping.h
 
 /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp
 ../include/bundle_adjust.h
@@ -119,6 +141,10 @@ ceres/types.h
 -
 ceres/rotation.h
 -
+opencv2/core/types.hpp
+-
+vector
+-
 
 /home/abstract/Simple-ORB-SLAM/src/camera.cpp
 ../include/camera.h
@@ -131,15 +157,15 @@ opencv2/imgproc.hpp
 /home/abstract/Simple-ORB-SLAM/src/frame.cpp
 ../include/frame.h
 /home/abstract/Simple-ORB-SLAM/include/frame.h
-opencv2/core/mat.hpp
--
-opencv2/core/types.hpp
--
-opencv2/features2d.hpp
--
 opencv2/highgui.hpp
 -
-opencv2/imgproc.hpp
+vector
+-
+
+/home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp
+../include/local_mapping.h
+/home/abstract/Simple-ORB-SLAM/include/local_mapping.h
+mutex
 -
 vector
 -
@@ -147,9 +173,9 @@ vector
 /home/abstract/Simple-ORB-SLAM/src/map.cpp
 ../include/map.h
 /home/abstract/Simple-ORB-SLAM/include/map.h
-mutex
+algorithm
 -
-vector
+mutex
 -
 
 /home/abstract/Simple-ORB-SLAM/src/map_point.cpp
@@ -157,6 +183,12 @@ vector
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
 opencv2/core/types.hpp
 -
+vector
+-
+
+/home/abstract/Simple-ORB-SLAM/src/matcher.cpp
+../include/matcher.h
+/home/abstract/Simple-ORB-SLAM/include/matcher.h
 
 /home/abstract/Simple-ORB-SLAM/src/viewer.cpp
 ../include/viewer.h

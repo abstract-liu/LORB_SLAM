@@ -29,13 +29,12 @@ int main(int argc, char* argv[])
 
 	Simple_ORB_SLAM::Camera euroc(argv[1]);
 	Simple_ORB_SLAM::Map map;
-	Simple_ORB_SLAM::VisualOdometry vo(argv[1], &euroc, &map);
+	Simple_ORB_SLAM::LocalMapping localMapper(&map);
+	Simple_ORB_SLAM::VisualOdometry vo(&localMapper, &euroc, &map);
 	Simple_ORB_SLAM::Viewer viewer(&euroc, &map, &vo);
 	
-	std::thread tViewer = std::thread(&Simple_ORB_SLAM::Viewer::Run, viewer);
-	
-	cin >> frameNum;
-
+	std::thread* tViewer = new std::thread(&Simple_ORB_SLAM::Viewer::Run, &viewer);
+	std::thread* tMapper = new std::thread(&Simple_ORB_SLAM::LocalMapping::Run, &localMapper);	
 	for(size_t i=0; i<frameNum; i++)
 	{
 		cv::Mat imgLeft, imgRight;

@@ -6,8 +6,10 @@ example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/bundle_adjust.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/camera.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/common.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/frame.h
+example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/local_mapping.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/map.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/map_point.h
+example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/matcher.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/viewer.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../include/visual_odometry.h
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: /usr/include/eigen3/Eigen/Cholesky

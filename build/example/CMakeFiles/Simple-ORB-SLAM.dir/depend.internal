@@ -7,8 +7,10 @@ example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o
  /home/abstract/Simple-ORB-SLAM/include/camera.h
  /home/abstract/Simple-ORB-SLAM/include/common.h
  /home/abstract/Simple-ORB-SLAM/include/frame.h
+ /home/abstract/Simple-ORB-SLAM/include/local_mapping.h
  /home/abstract/Simple-ORB-SLAM/include/map.h
  /home/abstract/Simple-ORB-SLAM/include/map_point.h
+ /home/abstract/Simple-ORB-SLAM/include/matcher.h
  /home/abstract/Simple-ORB-SLAM/include/viewer.h
  /home/abstract/Simple-ORB-SLAM/include/visual_odometry.h
  /usr/include/eigen3/Eigen/Cholesky

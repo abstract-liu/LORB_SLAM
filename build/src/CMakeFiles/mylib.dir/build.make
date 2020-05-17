@@ -129,9 +129,33 @@ src/CMakeFiles/mylib.dir/frame.cpp.o.provides: src/CMakeFiles/mylib.dir/frame.cp
 src/CMakeFiles/mylib.dir/frame.cpp.o.provides.build: src/CMakeFiles/mylib.dir/frame.cpp.o
 
 
+src/CMakeFiles/mylib.dir/local_mapping.cpp.o: src/CMakeFiles/mylib.dir/flags.make
+src/CMakeFiles/mylib.dir/local_mapping.cpp.o: ../src/local_mapping.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mylib.dir/local_mapping.cpp.o"
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/local_mapping.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp
+
+src/CMakeFiles/mylib.dir/local_mapping.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/local_mapping.cpp.i"
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp > CMakeFiles/mylib.dir/local_mapping.cpp.i
+
+src/CMakeFiles/mylib.dir/local_mapping.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/local_mapping.cpp.s"
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp -o CMakeFiles/mylib.dir/local_mapping.cpp.s
+
+src/CMakeFiles/mylib.dir/local_mapping.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/mylib.dir/local_mapping.cpp.o.requires
+
+src/CMakeFiles/mylib.dir/local_mapping.cpp.o.provides: src/CMakeFiles/mylib.dir/local_mapping.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/local_mapping.cpp.o.provides.build
+.PHONY : src/CMakeFiles/mylib.dir/local_mapping.cpp.o.provides
+
+src/CMakeFiles/mylib.dir/local_mapping.cpp.o.provides.build: src/CMakeFiles/mylib.dir/local_mapping.cpp.o
+
+
 src/CMakeFiles/mylib.dir/map.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/map.cpp.o: ../src/map.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mylib.dir/map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/mylib.dir/map.cpp.o"
 	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/map.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/map.cpp
 
 src/CMakeFiles/mylib.dir/map.cpp.i: cmake_force
@@ -155,7 +179,7 @@ src/CMakeFiles/mylib.dir/map.cpp.o.provides.build: src/CMakeFiles/mylib.dir/map.
 
 src/CMakeFiles/mylib.dir/map_point.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/map_point.cpp.o: ../src/map_point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/mylib.dir/map_point.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/mylib.dir/map_point.cpp.o"
 	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/map_point.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/map_point.cpp
 
 src/CMakeFiles/mylib.dir/map_point.cpp.i: cmake_force
@@ -177,9 +201,33 @@ src/CMakeFiles/mylib.dir/map_point.cpp.o.provides: src/CMakeFiles/mylib.dir/map_
 src/CMakeFiles/mylib.dir/map_point.cpp.o.provides.build: src/CMakeFiles/mylib.dir/map_point.cpp.o
 
 
+src/CMakeFiles/mylib.dir/matcher.cpp.o: src/CMakeFiles/mylib.dir/flags.make
+src/CMakeFiles/mylib.dir/matcher.cpp.o: ../src/matcher.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/mylib.dir/matcher.cpp.o"
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/matcher.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/matcher.cpp
+
+src/CMakeFiles/mylib.dir/matcher.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/matcher.cpp.i"
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/matcher.cpp > CMakeFiles/mylib.dir/matcher.cpp.i
+
+src/CMakeFiles/mylib.dir/matcher.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/matcher.cpp.s"
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/matcher.cpp -o CMakeFiles/mylib.dir/matcher.cpp.s
+
+src/CMakeFiles/mylib.dir/matcher.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/mylib.dir/matcher.cpp.o.requires
+
+src/CMakeFiles/mylib.dir/matcher.cpp.o.provides: src/CMakeFiles/mylib.dir/matcher.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/matcher.cpp.o.provides.build
+.PHONY : src/CMakeFiles/mylib.dir/matcher.cpp.o.provides
+
+src/CMakeFiles/mylib.dir/matcher.cpp.o.provides.build: src/CMakeFiles/mylib.dir/matcher.cpp.o
+
+
 src/CMakeFiles/mylib.dir/viewer.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/viewer.cpp.o: ../src/viewer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/mylib.dir/viewer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/mylib.dir/viewer.cpp.o"
 	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/viewer.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/viewer.cpp
 
 src/CMakeFiles/mylib.dir/viewer.cpp.i: cmake_force
@@ -203,7 +251,7 @@ src/CMakeFiles/mylib.dir/viewer.cpp.o.provides.build: src/CMakeFiles/mylib.dir/v
 
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.o: ../src/visual_odometry.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/mylib.dir/visual_odometry.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/mylib.dir/visual_odometry.cpp.o"
 	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/visual_odometry.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp
 
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.i: cmake_force
@@ -230,8 +278,10 @@ mylib_OBJECTS = \
 "CMakeFiles/mylib.dir/bundle_adjust.cpp.o" \
 "CMakeFiles/mylib.dir/camera.cpp.o" \
 "CMakeFiles/mylib.dir/frame.cpp.o" \
+"CMakeFiles/mylib.dir/local_mapping.cpp.o" \
 "CMakeFiles/mylib.dir/map.cpp.o" \
 "CMakeFiles/mylib.dir/map_point.cpp.o" \
+"CMakeFiles/mylib.dir/matcher.cpp.o" \
 "CMakeFiles/mylib.dir/viewer.cpp.o" \
 "CMakeFiles/mylib.dir/visual_odometry.cpp.o"
 
@@ -241,8 +291,10 @@ mylib_EXTERNAL_OBJECTS =
 src/libmylib.so: src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o
 src/libmylib.so: src/CMakeFiles/mylib.dir/camera.cpp.o
 src/libmylib.so: src/CMakeFiles/mylib.dir/frame.cpp.o
+src/libmylib.so: src/CMakeFiles/mylib.dir/local_mapping.cpp.o
 src/libmylib.so: src/CMakeFiles/mylib.dir/map.cpp.o
 src/libmylib.so: src/CMakeFiles/mylib.dir/map_point.cpp.o
+src/libmylib.so: src/CMakeFiles/mylib.dir/matcher.cpp.o
 src/libmylib.so: src/CMakeFiles/mylib.dir/viewer.cpp.o
 src/libmylib.so: src/CMakeFiles/mylib.dir/visual_odometry.cpp.o
 src/libmylib.so: src/CMakeFiles/mylib.dir/build.make
@@ -335,7 +387,7 @@ src/libmylib.so: /usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so
 src/libmylib.so: /usr/lib/x86_64-linux-gnu/librt.so
 src/libmylib.so: /usr/lib/x86_64-linux-gnu/libcxsparse.so
 src/libmylib.so: src/CMakeFiles/mylib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared library libmylib.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX shared library libmylib.so"
 	cd /home/abstract/Simple-ORB-SLAM/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mylib.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -346,8 +398,10 @@ src/CMakeFiles/mylib.dir/build: src/libmylib.so
 src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o.requires
 src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/camera.cpp.o.requires
 src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/frame.cpp.o.requires
+src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/local_mapping.cpp.o.requires
 src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/map.cpp.o.requires
 src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/map_point.cpp.o.requires
+src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/matcher.cpp.o.requires
 src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/viewer.cpp.o.requires
 src/CMakeFiles/mylib.dir/requires: src/CMakeFiles/mylib.dir/visual_odometry.cpp.o.requires
 

@@ -84,7 +84,7 @@ struct MPCost
 
 		//change tRvec
 		for(size_t i=0; i<3; i++)
-			tRvec[i] = mRvec.at<float>(i);
+			tRvec[i] = T(mRvec.at<float>(i) );
 
 		//change kps3d
 		tKps2d[0] = T(mKps2d.x);
@@ -171,14 +171,14 @@ void BA::ProjectPoseOptimization(Frame* pCurrFrame)
 
 	//define problem
 	ceres::Problem problem;
-	for(size_t i=0; i<pCurrFrame->mN; i++)
+	for(size_t i=0; i<pCurrFrame->mnMapPoints; i++)
 	{
 		MapPoint* pMP = pCurrFrame->mvpMapPoints[i];
-		if(!pMP)
+		if(pMP == NULL)
 			continue;
 		
 		cv::Point2f kp2d = kps2d[i];
-		cv::Point3f kp3d = pMP->GetPose();
+		cv::Point3f kp3d = pMP->GetPos();
 
 		ceres::CostFunction* tempCost = new ceres::AutoDiffCostFunction<PoseCost, 2,3,3>(new PoseCost(kp3d, kp2d, pCurrFrame->mpCamera));
 		problem.AddResidualBlock(tempCost, NULL, initialR, initialT);
@@ -198,9 +198,7 @@ void BA::ProjectPoseOptimization(Frame* pCurrFrame)
 	cv::Mat newR = (cv::Mat_<float>(3,1)<<initialR[0],initialR[1],initialR[2]);
 	cv::Mat newT = ( cv::Mat_<float>(3,1)<<initialT[0],initialT[1],initialT[2]);
 	
-	pCurrFrame->mRvec = newR.clone();
-	pCurrFrame->mTvec = newT.clone();
-
+	pCurrFrame->SetPose(newT, newR);
 }
 
 
@@ -259,7 +257,7 @@ void BA::LocalPoseOptimization(Frame* pCurrFrame)
 	for(size_t i=0; i<vpLocalMapPoints.size(); i++)
 	{
 		MapPoint* pMP = vpLocalMapPoints[i];
-		cv::Point3f kps3d = pMP->GetPose();
+		cv::Point3f kps3d = pMP->GetPos();
 
 		mpsPose[i][0] = kps3d.x;
 		mpsPose[i][1] = kps3d.y;
@@ -327,7 +325,7 @@ void BA::LocalPoseOptimization(Frame* pCurrFrame)
 	{
 		MapPoint* pMP = vpLocalMapPoints[i];
 		cv::Point3f kp3d(mpsPose[i][0], mpsPose[i][1], mpsPose[i][2]);
-		pMP->SetWorldPose(kp3d);
+		pMP->SetWorldPos(kp3d);
 	}
 }
 

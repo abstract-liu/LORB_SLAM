@@ -1,25 +1,37 @@
 #include "../include/local_mapping.h"
+#include <mutex>
 #include <vector>
 
 namespace Simple_ORB_SLAM
 {
 
+LocalMapping::LocalMapping(Map* pMap)
+{
+	mpMap = pMap;
+}
+
+void LocalMapping::InsertKeyFrame(Frame* pF)
+{
+	std::unique_lock<std::mutex> lock(mFrameLock);
+	mlpNewFrames.push_back(pF);
+}
 
 void LocalMapping::Run()
 {
 	while(true)
 	{
-		if(CheckNewFrames() == true)
+		
+		if(CheckNewFrame() == true )
 		{
-			ProcessNewFrames();
+			//ProcessNewFrames();
 
-			MapPointsCulling();
+			//MapPointsCulling();
 			
-			if(CheckNewFrames() == false)
+			if( CheckNewFrame() == false)
 			{
-				BA::LocalPoseOptimization(mpCurrFrame);
+				//BA::LocalPoseOptimization(mpCurrFrame);
 
-				KeyFramesCulling();
+				//KeyFramesCulling();
 	
 			}
 		}
@@ -27,10 +39,12 @@ void LocalMapping::Run()
 
 }
 
-bool LocalMapping::CheckNewFrames()
+bool LocalMapping::CheckNewFrame()
 {
-	return (!mlpNewFrames.empty());
+	std::unique_lock<std::mutex> lock(mFrameLock);
+	return ( mlpNewFrames.empty() == false);
 }
+
 
 void LocalMapping::ProcessNewFrames()
 {
@@ -38,14 +52,14 @@ void LocalMapping::ProcessNewFrames()
 		mpCurrFrame = mlpNewFrames.front();
 		mlpNewFrames.pop_front();
 	}
-
+/*
 	//step 1 
-	for(size_t i=0; i<mpCurrFrame->mN; i++)
+	for(size_t i=0; i<mpCurrFrame->mnMapPoints; i++)
 	{
 		MapPoint* pMP = mpCurrFrame->mvpMapPoints[i];
 		if(pMP->IsBad())
 			continue;
-		if(!pMP->IsInFrame(mpCurrFrame))
+		if(pMP->IsInFrame(mpCurrFrame) == false)
 		{
 			pMP->AddObservation(mpCurrFrame, i);
 		}
@@ -57,7 +71,7 @@ void LocalMapping::ProcessNewFrames()
 
 	//step 2
 	mpCurrFrame->UpdateConnections();
-
+*/
 	//step 3
 	mpMap->AddFrame(mpCurrFrame);
 
@@ -81,19 +95,22 @@ void LocalMapping::MapPointsCulling()
 			it = mvpRecentAddPoints.erase(it);
 		}
 
-		if((mpCurrFrame->mId - pMP->mFirstFId)>=2 && pMP->mN < 3)
+		if((mpCurrFrame->mnId - pMP->mnFirstFId)>=2 && pMP->mnObs < 3)
 		{
 			pMP->SetBadFlag();
 			it = mvpRecentAddPoints.erase(it);
 		}
 
-		if((mpCurrFrame->mId-pMP->mFirstFId)>=3)
+		if((mpCurrFrame->mnId-pMP->mnFirstFId)>=3)
 			it = mvpRecentAddPoints.erase(it);
 	}
 
 }
 
+void LocalMapping::KeyFramesCulling()
+{
 
+}
 
 
 }

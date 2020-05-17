@@ -4,11 +4,12 @@
 #include "common.h"
 #include "map_point.h"
 #include "frame.h"
-#include <mutex>
-#include <vector>
 
 namespace Simple_ORB_SLAM
 { 
+
+class MapPoint;
+class Frame;
 
 class Map
 {
@@ -19,13 +20,13 @@ public:
 	void AddMapPoint(MapPoint* pMP);
 	void EraseMapPoint(MapPoint* pMP);
 	std::set<MapPoint*> GetPoints();
-	
+	size_t GetMapPointsNum();	
 
 	//key frame
 	void AddFrame(Frame* pF);
 	void EraseFrame(Frame* pF);
 	std::set<Frame*> GetFrames();
-
+	size_t GetFramesNum();
 
 
 public:

@@ -1,4 +1,5 @@
 #include "../include/map.h"
+#include <algorithm>
 #include <mutex>
 
 namespace Simple_ORB_SLAM
@@ -26,7 +27,11 @@ std::set<MapPoint*> Map::GetPoints()
 	return mspMapPoints;
 }
 
-
+size_t Map::GetMapPointsNum()
+{
+	std::unique_lock<std::mutex> lock(mPointLock);
+	return mspMapPoints.size();
+}
 
 
 
@@ -52,7 +57,11 @@ std::set<Frame*> Map::GetFrames()
 	return mspFrames;
 }
 
-
+size_t Map::GetFramesNum()
+{
+	std::unique_lock<std::mutex> lock(mFrameLock);
+	return mspFrames.size();
+}
 
 
 

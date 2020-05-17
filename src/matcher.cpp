@@ -1,6 +1,4 @@
 #include "../include/matcher.h"
-#include <opencv2/features2d.hpp>
-#include <vector>
 
 namespace Simple_ORB_SLAM
 {
@@ -18,31 +16,28 @@ size_t Matcher::SearchByProjection(Frame* currFrame, Frame* prevFrame)
 	cv::Mat currDescriptors = currFrame->GetDescriptors();
 
 	//get prev map points
-	for(size_t i=0; i<prevFrame->mN; i++)
+	for(size_t i=0; i<prevFrame->mnMapPoints; i++)
 	{
 		MapPoint* pMP = prevFrame->mvpMapPoints[i];
 		cv::Point2f pt2f;
 
 		//null
-		if(!pMP)
+		if(pMP == NULL)
 			continue;
-		//not in frustum
-		bool bTag =	currFrame->IsVisible(pMP, pt2f); 
-		if(bTag == false)
-			continue;
-
 		prevMPs.push_back(pMP);
 		prevDescriptors.push_back(pMP->GetDescriptor());
 	}
+	
+	//cout << "prev size " << prevMPs.size() << endl;
 
 	//brute force match
 	cv::BFMatcher matcher(NORM_HAMMING, true);
 	std::vector<DMatch> matches;
 
-	matcher.match(prevDescriptors, currDescriptors, matches);
+	matcher.match(currDescriptors, prevDescriptors, matches);
 
 	//reject outliers
-	double minDist = 9999;
+	double minDist = DBL_MAX;
 	for(size_t i=0; i<matches.size(); i++)
 	{
 		if(matches[i].distance < minDist)
@@ -54,10 +49,12 @@ size_t Matcher::SearchByProjection(Frame* currFrame, Frame* prevFrame)
 	{
 		if(matches[i].distance > max(2*minDist, 30.0))
 			continue;
-		currFrame->mvpMapPoints[matches[i].trainIdx] = prevMPs[matches[i].queryIdx];
+		currFrame->mvpMapPoints[matches[i].queryIdx] = prevMPs[matches[i].trainIdx];
 		nPoints += 1;
 	}
 	
+	//cout << "match size " << nPoints << endl;
+
 	return nPoints;
 
 }
@@ -66,7 +63,7 @@ size_t Matcher::SearchByProjection(Frame* currFrame, Frame* prevFrame)
 
 
 
-size_t Matcher::SearchLocalPoints(Frame* currFrame, std::vector<MapPoint*> vpMPs)
+size_t Matcher::SearchLocalPoints(Frame* currFrame, std::set<MapPoint*> vpMPs)
 {
 	std::vector<MapPoint*> prevMPs;
 
@@ -74,31 +71,28 @@ size_t Matcher::SearchLocalPoints(Frame* currFrame, std::vector<MapPoint*> vpMPs
 	cv::Mat currDescriptors = currFrame->GetDescriptors();
 
 	//get prev map points
-	for(size_t i=0; i<vpMPs.size(); i++)
+	for(std::set<MapPoint*>::iterator it = vpMPs.begin(); it != vpMPs.end(); it++)
 	{
-		MapPoint* pMP = vpMPs[i];
+		MapPoint* pMP = *it;
 		cv::Point2f pt2f;
 
 		//null
-		if(!pMP)
-			continue;
-		//not in frustum
-		bool bTag =	currFrame->IsVisible(pMP, pt2f); 
-		if(bTag == false)
+		if(pMP == NULL)
 			continue;
 
 		prevMPs.push_back(pMP);
 		prevDescriptors.push_back(pMP->GetDescriptor());
 	}
 
+
 	//brute force match
 	cv::BFMatcher matcher(NORM_HAMMING, true);
 	std::vector<DMatch> matches;
 
-	matcher.match(prevDescriptors, currDescriptors, matches);
+	matcher.match(currDescriptors, prevDescriptors, matches);
 
 	//reject outliers
-	double minDist = 9999;
+	double minDist = DBL_MAX;
 	for(size_t i=0; i<matches.size(); i++)
 	{
 		if(matches[i].distance < minDist)
@@ -110,7 +104,7 @@ size_t Matcher::SearchLocalPoints(Frame* currFrame, std::vector<MapPoint*> vpMPs
 	{
 		if(matches[i].distance > max(2*minDist, 30.0))
 			continue;
-		currFrame->mvpMapPoints[matches[i].trainIdx] = prevMPs[matches[i].queryIdx];
+		currFrame->mvpMapPoints[matches[i].queryIdx] = prevMPs[matches[i].trainIdx];
 		nPoints += 1;
 	}
 	

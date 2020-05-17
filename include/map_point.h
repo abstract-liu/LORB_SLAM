@@ -1,5 +1,4 @@
 #ifndef MAP_POINT_H
-
 #define MAP_POINT_H
 
 #include "common.h"
@@ -9,10 +8,14 @@
 namespace Simple_ORB_SLAM
 { 
 
+class Frame;
+class Map;
+
 class MapPoint
 {
 public:
-	MapPoint(const cv::Point3f& point, const Frame* pF, Map* pMap);
+	
+	MapPoint(cv::Point3f pt, Frame* pF, Map* pMap);
 	
 	//pose
 	void SetWorldPos(cv::Point3f kp3d);
@@ -28,8 +31,8 @@ public:
 	void EraseObservation(Frame* pF);
 	std::map<Frame*, size_t> GetObservations();
 	
-	void IncreaseFound(size_t n);
-	void IncreaseVisible(size_t n);
+	void IncreaseFound(size_t n = 1);
+	void IncreaseVisible(size_t n = 1);
 	float GetFoundRatio();
 	
 

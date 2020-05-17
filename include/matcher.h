@@ -16,7 +16,7 @@ public:
 	
 	size_t static SearchByProjection(Frame* curr, Frame* prev);
 	
-	size_t static SearchLocalPoints(Frame* curr, std::vector<MapPoint*> vpMPs);
+	size_t static SearchLocalPoints(Frame* curr, std::set<MapPoint*> vpMPs);
 
 };
 

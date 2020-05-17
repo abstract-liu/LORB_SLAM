@@ -61,13 +61,13 @@ void Viewer::Run()
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 		DrawCurrCamera();
-			
+		
 		if(menuShowPoints)
 			DrawMapPoints();
-
+		
 		if(menuShowKeyFrames)
 			DrawKeyFrames();
-
+		
 		pangolin::FinishFrame();	
 	}
 
@@ -78,17 +78,18 @@ void Viewer::Run()
 // opengl learning!!!
 void Viewer::DrawKeyFrames()
 {
-	std::vector<Frame*> keyFrames = mpMap->GetKeyFrames();
+	std::set<Frame*> keyFrames = mpMap->GetFrames();
 	
 	const float w = mKeyFrameSize;
     const float h = w*0.75;
     const float z = w*0.6;
 
-	for(size_t i=0; i<keyFrames.size(); i++)
+	for(std::set<Frame*>::iterator it=keyFrames.begin(); it != keyFrames.end(); it++)
 	{
 		glPushMatrix();
 		
-		cv::Mat Twc = keyFrames[i]->GetInvPose().t();
+		cv::Mat Twc = (*it)->GetInvPose().t();
+
 		glMultMatrixf(Twc.ptr<GLfloat>(0));
 	
 		glLineWidth(mKeyFrameLineWidth);
@@ -137,6 +138,7 @@ void Viewer::DrawCurrCamera()
 	
 	//warning null !!!!!!!!!!!!!!!! 
 	cv::Mat Twc = mpVO->GetCurrInvPos().t();
+
 	glMultMatrixf(Twc.ptr<GLfloat>(0));
 	
 	glLineWidth(mCameraLineWidth);
@@ -176,32 +178,21 @@ void Viewer::DrawCurrCamera()
 
 void Viewer::DrawMapPoints()
 {
-	std::vector<MapPoint*> globalMapPoints = mpMap->GetPoints();
-	std::vector<MapPoint*> localMapPoints = mpVO->mpLocalMap->GetPoints();
+	std::set<MapPoint*> globalMapPoints = mpMap->GetPoints();
 
 	//draw global points
 	glPointSize(mPointSize);
     glBegin(GL_POINTS);
     glColor3f(0.0,0.0,0.0);
+	
 
-	for(size_t i=0; i<globalMapPoints.size(); i++)
+	for(std::set<MapPoint*>::iterator it = globalMapPoints.begin(); it != globalMapPoints.end(); it++)
 	{
-		cv::Point3f mapPoint = globalMapPoints[i]->GetPose();
+		cv::Point3f mapPoint = (*it)->GetPos();
 		glVertex3f(mapPoint.x, mapPoint.y, mapPoint.z);
 	}
 	glEnd();
 
-	//draw local points
-	glPointSize(mPointSize);
-    glBegin(GL_POINTS);
-    glColor3f(1.0,0.0,0.0);
-
-	for(size_t i=0; i<localMapPoints.size(); i++)
-	{
-		cv::Point3f mapPoint = localMapPoints[i]->GetPose();
-		glVertex3f(mapPoint.x,mapPoint.y, mapPoint.z);
-	}
-	glEnd();
 
 
 }
