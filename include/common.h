@@ -22,6 +22,7 @@ using namespace cv;
 #include <memory>
 #include <string>
 #include <fstream>
+#include <thread>
 using namespace std;
 
 

@@ -125,6 +125,33 @@ mylib/fast:
 	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/build
 .PHONY : mylib/fast
 
+ORBextractor.o: ORBextractor.cpp.o
+
+.PHONY : ORBextractor.o
+
+# target to build an object file
+ORBextractor.cpp.o:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/ORBextractor.cpp.o
+.PHONY : ORBextractor.cpp.o
+
+ORBextractor.i: ORBextractor.cpp.i
+
+.PHONY : ORBextractor.i
+
+# target to preprocess a source file
+ORBextractor.cpp.i:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/ORBextractor.cpp.i
+.PHONY : ORBextractor.cpp.i
+
+ORBextractor.s: ORBextractor.cpp.s
+
+.PHONY : ORBextractor.s
+
+# target to generate assembly for a file
+ORBextractor.cpp.s:
+	cd /home/abstract/Simple-ORB-SLAM/build && $(MAKE) -f src/CMakeFiles/mylib.dir/build.make src/CMakeFiles/mylib.dir/ORBextractor.cpp.s
+.PHONY : ORBextractor.cpp.s
+
 bundle_adjust.o: bundle_adjust.cpp.o
 
 .PHONY : bundle_adjust.o
@@ -377,6 +404,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... mylib"
 	@echo "... edit_cache"
+	@echo "... ORBextractor.o"
+	@echo "... ORBextractor.i"
+	@echo "... ORBextractor.s"
 	@echo "... bundle_adjust.o"
 	@echo "... bundle_adjust.i"
 	@echo "... bundle_adjust.s"

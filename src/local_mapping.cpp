@@ -23,7 +23,7 @@ void LocalMapping::Run()
 		
 		if(CheckNewFrame() == true )
 		{
-			//ProcessNewFrames();
+			ProcessNewFrames();
 
 			//MapPointsCulling();
 			

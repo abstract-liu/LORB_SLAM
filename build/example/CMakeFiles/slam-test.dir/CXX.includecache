@@ -37,6 +37,8 @@ string
 -
 fstream
 -
+thread
+-
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

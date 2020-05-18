@@ -43,6 +43,8 @@ int main(int argc, char* argv[])
 		imgLeft = cv::imread(strImgLeft[i]);
 		imgRight = cv::imread(strImgRight[i]);
 		
+
+
 		if(imgLeft.empty() || imgRight.empty())
 		{
 			cout << "----empty image" << endl;
@@ -52,6 +54,8 @@ int main(int argc, char* argv[])
 		euroc.RectifyL(imgLeft, imgLeftRec);
 		euroc.RectifyR(imgRight, imgRightRec);
 		
+		cvtColor(imgLeftRec,imgLeftRec,CV_RGB2GRAY);
+        cvtColor(imgRightRec,imgRightRec,CV_RGB2GRAY);
 		
 		vo.Run(timeStampLeft[i], imgLeftRec, imgRightRec);
 		

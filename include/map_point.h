@@ -16,6 +16,7 @@ class MapPoint
 public:
 	
 	MapPoint(cv::Point3f pt, Frame* pF, Map* pMap);
+	MapPoint(cv::Point3f pt, Frame* pF, Map* pMap, size_t idx);
 	
 	//pose
 	void SetWorldPos(cv::Point3f kp3d);

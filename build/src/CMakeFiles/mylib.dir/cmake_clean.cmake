@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/mylib.dir/matcher.cpp.o"
   "CMakeFiles/mylib.dir/viewer.cpp.o"
   "CMakeFiles/mylib.dir/visual_odometry.cpp.o"
+  "CMakeFiles/mylib.dir/ORBextractor.cpp.o"
   "libmylib.pdb"
   "libmylib.so"
 )

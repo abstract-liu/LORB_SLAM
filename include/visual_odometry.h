@@ -60,6 +60,7 @@ private:
 	Frame* mPrevFrame; 
 	Frame* mCurrFrame;
 	Frame* mReferFrame;
+	Frame* mRelocateFrame;
 
 	//local map
 	std::vector<Frame*> mpLocalKeyFrames;

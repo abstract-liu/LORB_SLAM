@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+../include/ORBextractor.h
+vector
+-
+list
+-
+opencv/cv.h
+-
+
+/home/abstract/Simple-ORB-SLAM/include/ORBextractor.h
+vector
+-
+list
+-
+opencv/cv.h
+-
+
 /home/abstract/Simple-ORB-SLAM/include/bundle_adjust.h
 common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
@@ -49,6 +65,8 @@ string
 -
 fstream
 -
+thread
+-
 
 /home/abstract/Simple-ORB-SLAM/include/frame.h
 common.h
@@ -59,6 +77,10 @@ map_point.h
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
 camera.h
 /home/abstract/Simple-ORB-SLAM/include/camera.h
+ORBextractor.h
+/home/abstract/Simple-ORB-SLAM/include/ORBextractor.h
+matcher.h
+/home/abstract/Simple-ORB-SLAM/include/matcher.h
 
 /home/abstract/Simple-ORB-SLAM/include/local_mapping.h
 frame.h
@@ -93,8 +115,8 @@ common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
 frame.h
 /home/abstract/Simple-ORB-SLAM/include/frame.h
-vector
--
+map_point.h
+/home/abstract/Simple-ORB-SLAM/include/map_point.h
 
 /home/abstract/Simple-ORB-SLAM/include/viewer.h
 common.h
@@ -125,6 +147,24 @@ matcher.h
 /home/abstract/Simple-ORB-SLAM/include/matcher.h
 local_mapping.h
 /home/abstract/Simple-ORB-SLAM/include/local_mapping.h
+
+/home/abstract/Simple-ORB-SLAM/src/ORBextractor.cpp
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/features2d/features2d.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+vector
+-
+iterator
+-
+ORBextractor.h
+/home/abstract/Simple-ORB-SLAM/src/ORBextractor.h
+iostream
+-
 
 /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp
 ../include/bundle_adjust.h

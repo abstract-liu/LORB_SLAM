@@ -8,6 +8,17 @@ Camera::Camera(const string& strParaFile)
 {	
 	cv::FileStorage file(strParaFile+"EuRoC.yaml", cv::FileStorage::READ);
 	
+	// 每一帧提取的特征点数 1000
+   	mnFeatures = file["ORBextractor.nFeatures"];
+    // 图像建立金字塔时的变化尺度 1.2
+    mfScaleFactor = file["ORBextractor.scaleFactor"];
+    // 尺度金字塔的层数 8
+    mnLevels = file["ORBextractor.nLevels"];
+    // 提取fast特征点的默认阈值 20
+    mfIniThFAST = file["ORBextractor.iniThFAST"];
+    // 如果默认阈值提取不出足够fast特征点，则使用最小阈值 8
+    mfMinThFAST = file["ORBextractor.minThFAST"];
+
 	mMinPNPN = file["MinPNPN"];
 	mMaxNorm = file["MaxNorm"];
 

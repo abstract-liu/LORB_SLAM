@@ -28,6 +28,14 @@ vector
 thread
 -
 
+/home/abstract/Simple-ORB-SLAM/include/ORBextractor.h
+vector
+-
+list
+-
+opencv/cv.h
+-
+
 /home/abstract/Simple-ORB-SLAM/include/bundle_adjust.h
 common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
@@ -71,6 +79,8 @@ string
 -
 fstream
 -
+thread
+-
 
 /home/abstract/Simple-ORB-SLAM/include/frame.h
 common.h
@@ -81,6 +91,10 @@ map_point.h
 /home/abstract/Simple-ORB-SLAM/include/map_point.h
 camera.h
 /home/abstract/Simple-ORB-SLAM/include/camera.h
+ORBextractor.h
+/home/abstract/Simple-ORB-SLAM/include/ORBextractor.h
+matcher.h
+/home/abstract/Simple-ORB-SLAM/include/matcher.h
 
 /home/abstract/Simple-ORB-SLAM/include/local_mapping.h
 frame.h
@@ -115,8 +129,8 @@ common.h
 /home/abstract/Simple-ORB-SLAM/include/common.h
 frame.h
 /home/abstract/Simple-ORB-SLAM/include/frame.h
-vector
--
+map_point.h
+/home/abstract/Simple-ORB-SLAM/include/map_point.h
 
 /home/abstract/Simple-ORB-SLAM/include/viewer.h
 common.h

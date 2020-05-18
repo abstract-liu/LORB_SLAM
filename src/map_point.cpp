@@ -21,6 +21,23 @@ MapPoint::MapPoint(cv::Point3f pt, Frame* pF, Map* pMap)
 	mpMap = pMap;
 }		
 
+MapPoint::MapPoint(cv::Point3f pt, Frame* pF, Map* pMap, size_t idx)
+{
+	mWorldPos = pt;
+
+	mnFirstFId = pF->mnId;
+	mnObs = 0;
+
+	mbBadFlag = false;
+	
+	mnVisible = 0;
+	mnFound = 0;
+	mDescriptor = pF->GetDescriptor(idx);
+	
+	mpMap = pMap;
+
+}
+
 
 void MapPoint::SetWorldPos(cv::Point3f kp3d)
 {

@@ -4,10 +4,13 @@
 
 #include "common.h"
 #include "frame.h"
-#include <vector>
+#include "map_point.h"
 
 namespace Simple_ORB_SLAM
 {
+
+class Frame;
+class MapPoint;
 
 class Matcher
 {
@@ -15,8 +18,19 @@ public:
 	Matcher();
 	
 	size_t static SearchByProjection(Frame* curr, Frame* prev);
+	size_t static SearchByProjection(Frame* CurrentFrame, Frame* LastFrame, const float th);
 	
 	size_t static SearchLocalPoints(Frame* curr, std::set<MapPoint*> vpMPs);
+	
+	int static DescriptorDistance(const cv::Mat &a, const cv::Mat &b);
+
+	void static ComputeThreeMaxima(vector<int>* histo, const int L, int &ind1, int &ind2, int &ind3);
+
+public:
+    static const int TH_LOW;
+    static const int TH_HIGH;
+    static const int HISTO_LENGTH;
+
 
 };
 

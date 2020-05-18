@@ -8,7 +8,7 @@ add_library( mylib SHARED
 	matcher.cpp
 	viewer.cpp
 	visual_odometry.cpp
-	
+	ORBextractor.cpp
 	)
 
 target_link_libraries( mylib ${THIRD_PARTY_LIBS})

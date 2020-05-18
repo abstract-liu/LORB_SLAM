@@ -37,6 +37,9 @@ public:
 	//draw settings
 	float mKeyFrameSize, mKeyFrameLineWidth, mPointSize, mCameraSize, mCameraLineWidth;
 
+	int mnFeatures,mnLevels,mfIniThFAST,mfMinThFAST;
+	float mfScaleFactor;
+
 };
 
  }

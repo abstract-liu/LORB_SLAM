@@ -45,7 +45,6 @@ void VisualOdometry::Run(const string& timeStamp, const cv::Mat& imgLeft, const 
 		return;
 	}
 	
-
 	bool tag = EstimatePoseMotion(mPrevFrame);
 	
 	if(tag == false)
@@ -60,15 +59,14 @@ void VisualOdometry::Run(const string& timeStamp, const cv::Mat& imgLeft, const 
 		cout << "---- reference frame fail" << endl;
 	}
 	
-	tag = EstimatePoseLocal();	
-	
+	//tag = EstimatePoseLocal();	
 
 	//update pose and velocity
 	mTcc = mPrevFrame->GetInvPose() * mCurrFrame->GetPose();
 	mTwc = mCurrFrame->GetInvPose();
 
 	//add key frame and do local bundle
-	AddKeyFrame();
+	//AddKeyFrame();
 	mpMap->AddFrame(mCurrFrame);
 	
 	//update prev frame and refer frame
@@ -85,22 +83,20 @@ void VisualOdometry::Initialize()
 	//set pose
 	mCurrFrame->SetPose(cv::Mat::eye(4,4,CV_32F));
 
-	//add frame to global map
-	mpMap->AddFrame(mCurrFrame);
-
-	//add points to global
-	std::vector<cv::Point3f> kps3d = mCurrFrame->GetKps3d();
-
 	for(size_t i=0; i<mCurrFrame->mnMapPoints; i++)
 	{
-		MapPoint* pMP = new MapPoint(kps3d[i], mCurrFrame, mpMap);
+		if(mCurrFrame->mvDepth[i] < 0)
+			continue;
+		
+		cv::Point3f kp3d = mCurrFrame->UnprojectStereo(i);
+		MapPoint* pMP = new MapPoint(kp3d, mCurrFrame, mpMap);
 		pMP->AddObservation(mCurrFrame, i);
 		pMP->ComputeDescriptor();
 
 		mCurrFrame->AddMapPoint(pMP, i);
 		mpMap->AddMapPoint(pMP);
 	}
-	cout << "create new map with " << mCurrFrame->mnMapPoints << " points" << endl;
+	cout << "create new map with " << mpMap->GetMapPointsNum() << " points" << endl;
 	
 	//add to local map
 	mpLocalMapper->InsertKeyFrame(mCurrFrame);
@@ -108,6 +104,7 @@ void VisualOdometry::Initialize()
 
 	mPrevFrame = mCurrFrame;
 	mReferFrame = mCurrFrame;
+	mRelocateFrame = mCurrFrame;
 
 	isFistFrame = false;
 
@@ -116,16 +113,14 @@ void VisualOdometry::Initialize()
 }
 
 
-
-
 bool VisualOdometry::EstimatePoseMotion(Frame* pF)
 {
 	mCurrFrame->SetPose(pF->GetPose()*mTcc);
 
 	UpdateFrame(pF);
-	//match points
-	size_t nMatches = Matcher::SearchByProjection(mCurrFrame, pF);
 	
+	//match points
+	size_t nMatches = Matcher::SearchByProjection(mCurrFrame, pF, 15);
 
 	if(nMatches <= 10)
 		return false;
@@ -161,8 +156,6 @@ bool VisualOdometry::EstimatePoseLocal()
 void VisualOdometry::UpdateFrame(Frame* pF)
 {
 	
-	std::vector<cv::Point3f> kps3d = pF->GetKps3d();
-
 	for(size_t i=0; i<pF->mnMapPoints; i++)
 	{
 		MapPoint* pMP = pF->mvpMapPoints[i];
@@ -170,14 +163,8 @@ void VisualOdometry::UpdateFrame(Frame* pF)
 		if(pMP != NULL)
 			continue;
 		
-		cv::Mat kp3d = (cv::Mat_<float>(4,1) << kps3d[i].x, kps3d[i].y, kps3d[i].z, 1);
-		cv::Mat kpWorld = mPrevFrame->GetInvPose() * kp3d;
-		cv::Point3f ptWorld(kpWorld.at<float>(0), kpWorld.at<float>(1), kpWorld.at<float>(2));
-
-		MapPoint* pNewMP = new MapPoint(ptWorld, pF, mpMap);
-		pNewMP->AddObservation(pF, i);
-		pNewMP->ComputeDescriptor();
-
+		cv::Point3f kp3d = mCurrFrame->UnprojectStereo(i);
+		MapPoint* pNewMP = new MapPoint(kp3d, pF, mpMap, i);
 		pF->AddMapPoint(pNewMP, i);
 	}
 

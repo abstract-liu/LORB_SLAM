@@ -5,13 +5,18 @@
 #include "map.h"
 #include "map_point.h"
 #include "camera.h"
-
+#include "ORBextractor.h"
+#include "matcher.h"
 
 namespace Simple_ORB_SLAM
 { 
+const int FRAME_GRID_ROWS = 48;
+const int FRAME_GRID_COLS = 64;
+
 
 class MapPoint;
 class Map;
+class Mather;
 
 class Frame
 {
@@ -62,6 +67,9 @@ public:
 	void AddConnection(Frame* pF, size_t weight);
 
 
+    cv::Point3f UnprojectStereo(const int &i);
+	std::vector<size_t> GetFeaturesInArea(const float &x, const float  &y, const float  &r, const int minLevel=-1, const int maxLevel=-1) const;
+
 
 public:
 	static size_t Idx;
@@ -77,16 +85,37 @@ public:
 	cv::Mat mTcw;
 	cv::Mat mTvec, mRvec;
 
+	std::vector<float> mvuRight;
+    std::vector<float> mvDepth;
+	std::vector<bool> mvbOutlier;
+	std::vector<cv::KeyPoint> mvKeysUn;
+	std::vector<cv::KeyPoint> mvKeys, mvKeysRight;
 
+    float mbf, mb, cx, cy, fx, fy;
+
+	float mnMinX;
+    float mnMaxX;
+    float mnMinY;
+    float mnMaxY;
+
+    vector<float> mvScaleFactors;
+    vector<float> mvInvScaleFactors;
+    vector<float> mvLevelSigma2;
+    vector<float> mvInvLevelSigma2;
 
 private:
 
 	//detect feature
 	void DetectFeature(const cv::Mat& imgLeft, const cv::Mat& imgRight);
+	void ComputeImageBounds(const cv::Mat &imLeft);
+	void AssignFeaturesToGrid();
+	bool PosInGrid(const cv::KeyPoint &kp, int &posX, int &posY);
+	void ExtractORB(int flag, const cv::Mat &im);
+	void UndistortKeyPoints();
 
 	//stereo
 	void Stereo(const cv::Mat& imgLeft, const cv::Mat& imgRight);
-
+	void ComputeStereoMatches();
 
 private:
 
@@ -95,6 +124,24 @@ private:
 	std::vector<cv::Point2f> mKps2d, mKpsRight2d;
 	std::vector<cv::Point3f> mKps3d;
 	cv::Mat mDescriptors, mDescriptorsRight;
+	
+	ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
+	std::vector<std::size_t> mGrid[FRAME_GRID_COLS][FRAME_GRID_ROWS];
+
+
+  
+    // Scale pyramid info.
+    int mnScaleLevels;//图像提金字塔的层数
+    float mfScaleFactor;//图像提金字塔的尺度因子
+    float mfLogScaleFactor;//
+
+
+	float mfGridElementWidthInv;
+    float mfGridElementHeightInv;
+
+
+
+
 
 	Map* mpMap;
 

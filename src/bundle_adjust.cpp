@@ -167,7 +167,6 @@ void BA::ProjectPoseOptimization(Frame* pCurrFrame)
 		initialR[i] = pCurrFrame->mRvec.at<float>(i);
 	}
 
-	std::vector<cv::Point2f> kps2d = pCurrFrame->GetKps2d();
 
 	//define problem
 	ceres::Problem problem;
@@ -177,8 +176,9 @@ void BA::ProjectPoseOptimization(Frame* pCurrFrame)
 		if(pMP == NULL)
 			continue;
 		
-		cv::Point2f kp2d = kps2d[i];
+		cv::Point2f kp2d = pCurrFrame->GetKp2d(i);
 		cv::Point3f kp3d = pMP->GetPos();
+
 
 		ceres::CostFunction* tempCost = new ceres::AutoDiffCostFunction<PoseCost, 2,3,3>(new PoseCost(kp3d, kp2d, pCurrFrame->mpCamera));
 		problem.AddResidualBlock(tempCost, NULL, initialR, initialT);
