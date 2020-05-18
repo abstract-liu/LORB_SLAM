@@ -70,6 +70,7 @@ public:
     cv::Point3f UnprojectStereo(const int &i);
 	std::vector<size_t> GetFeaturesInArea(const float &x, const float  &y, const float  &r, const int minLevel=-1, const int maxLevel=-1) const;
 	bool IsInFrustum(MapPoint *pMP, float viewingCosLimit);
+	cv::Point3f GetCameraCenter();
 
 public:
 	static size_t Idx;
@@ -82,8 +83,9 @@ public:
 	Camera* mpCamera;
 
 	//camera's pose
-	cv::Mat mTcw;
+	cv::Mat mTcw, mTwc;
 	cv::Mat mTvec, mRvec;
+	cv::Point3f mptCameraCenter;
 
 	std::vector<float> mvuRight;
     std::vector<float> mvDepth;
@@ -99,9 +101,9 @@ public:
     float mnMaxY;
 
  	// Scale
-    const int mnScaleLevels;
-    const float mfScaleFactor;
-    const float mfLogScaleFactor;
+    int mnScaleLevels;
+    float mfScaleFactor;
+    float mfLogScaleFactor;
     vector<float> mvScaleFactors;
     vector<float> mvInvScaleFactors;
     vector<float> mvLevelSigma2;
@@ -131,13 +133,6 @@ private:
 	
 	ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
 	std::vector<std::size_t> mGrid[FRAME_GRID_COLS][FRAME_GRID_ROWS];
-
-
-  
-    // Scale pyramid info.
-    int mnScaleLevels;//图像提金字塔的层数
-    float mfScaleFactor;//图像提金字塔的尺度因子
-    float mfLogScaleFactor;//
 
 
 	float mfGridElementWidthInv;

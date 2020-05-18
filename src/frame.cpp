@@ -497,8 +497,6 @@ bool Frame::IsInFrustum(MapPoint *pMP, float viewingCosLimit)
 
 
 
-
-
 void Frame::DetectFeature(const cv::Mat& imgLeft, const cv::Mat& imgRight)
 {
 	Ptr<cv::FeatureDetector> detector = ORB::create();
@@ -591,8 +589,9 @@ void Frame::UpdatePoseMat()
 	rotMat.copyTo(mTcw.rowRange(0,3).colRange(0,3));
 	mTvec.copyTo(mTcw.rowRange(0,3).col(3));
 
+    mTwc = mTcw.inv();
+    mptCameraCenter = cv::Point3f(mTwc.at<float>(0,3), mTwc.at<float>(1,3), mTwc.at<float>(2,3));
 }
-
 
 void Frame::UpdatePoseVector()
 {
@@ -600,9 +599,15 @@ void Frame::UpdatePoseVector()
 	mTcw.rowRange(0,3).colRange(0,3).copyTo(rotMat);
 	cv::Rodrigues(rotMat,mRvec);
 	mTcw.rowRange(0,3).col(3).copyTo(mTvec);
+
+    mTwc = mTcw.inv();
+    mptCameraCenter = cv::Point3f(mTwc.at<float>(0,3), mTwc.at<float>(1,3), mTwc.at<float>(2,3));
 }
 
-
+cv::Point3f Frame::GetCameraCenter()
+{
+    return mptCameraCenter;
+}
 
 cv::Mat Frame::GetPose()
 {

@@ -92,6 +92,7 @@ void VisualOdometry::Initialize()
 		MapPoint* pMP = new MapPoint(kp3d, mCurrFrame, mpMap);
 		pMP->AddObservation(mCurrFrame, i);
 		pMP->ComputeDescriptor();
+		pMP->UpdateNormalAndDepth();
 
 		mCurrFrame->AddMapPoint(pMP, i);
 		mpMap->AddMapPoint(pMP);
@@ -144,6 +145,7 @@ bool VisualOdometry::EstimatePoseLocal()
 	//step 1
 	UpdateLocalMap();
 
+
 	//step 2
 	// Do not search map points already matched
     // 步骤1：遍历当前帧的mvpMapPoints，标记这些MapPoints不参与之后的搜索
@@ -169,7 +171,6 @@ bool VisualOdometry::EstimatePoseLocal()
     }
 
     int nToMatch=0;
-
     // Project points in frame and check its visibility
     // 步骤2：将所有局部MapPoints投影到当前帧，判断是否在视野范围内，然后进行投影匹配
     for(std::set<MapPoint*>::iterator vit=mpLocalMapPoints.begin(); vit!=mpLocalMapPoints.end(); vit++)
@@ -389,6 +390,7 @@ void VisualOdometry::AddKeyFrame()
 		pMP = new MapPoint(ptWorld, mCurrFrame, mpMap);
 		pMP->AddObservation(mCurrFrame, i);
 		pMP->ComputeDescriptor();
+		pMP->UpdateNormalAndDepth();
 
 		mCurrFrame->AddMapPoint(pMP, i);
 		mpMap->AddMapPoint(pMP);

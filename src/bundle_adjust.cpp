@@ -207,7 +207,7 @@ void BA::ProjectPoseOptimization(Frame* pCurrFrame)
 void BA::LocalPoseOptimization(Frame* pCurrFrame)
 {
 	//get covisible frames
-	std:vector<Frame*> vpLocalFrames;
+	std::vector<Frame*> vpLocalFrames;
 	vpLocalFrames.push_back(pCurrFrame);
 	std::vector<Frame*> vpCovisibleFrames = pCurrFrame->GetCovisibleFrames();
 	for(size_t i=0; i<vpCovisibleFrames.size(); i++)

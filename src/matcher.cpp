@@ -86,7 +86,7 @@ size_t Matcher::SearchByProjection(Frame* CurrentFrame, Frame* LastFrame, const 
     const bool bForward = tlc.at<float>(2)>CurrentFrame->mb ; // 非单目情况，如果Z大于基线，则表示前进
     const bool bBackward = -tlc.at<float>(2)>CurrentFrame->mb ; // 非单目情况，如果Z小于基线，则表示前进
 
-    for(int i=0; i<LastFrame->mnMapPoints; i++)
+    for(size_t i=0; i<LastFrame->mnMapPoints; i++)
     {
         MapPoint* pMP = LastFrame->mvpMapPoints[i];
 

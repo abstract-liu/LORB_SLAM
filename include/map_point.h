@@ -46,7 +46,9 @@ public:
 	float GetMinDistanceInvariance();
 	float GetMaxDistanceInvariance();
 	cv::Mat GetNormal();
+	void UpdateNormalAndDepth();
 	int PredictScale(const float &currentDist, Frame* pKF);
+	
 
 public:
 	size_t mnObs;
@@ -79,6 +81,7 @@ private:
 	cv::Mat mDescriptor;
 	
 	std::map<Frame*, size_t> mObservations;
+	Frame* mpRefKF;
 
 	bool mbBadFlag;
 	

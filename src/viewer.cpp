@@ -124,7 +124,6 @@ void Viewer::DrawKeyFrames()
 	}
 
 
-
 }
 
 
@@ -172,7 +171,6 @@ void Viewer::DrawCurrCamera()
 	glPopMatrix();
 	
 
-
 }
 
 
@@ -192,7 +190,6 @@ void Viewer::DrawMapPoints()
 		glVertex3f(mapPoint.x, mapPoint.y, mapPoint.z);
 	}
 	glEnd();
-
 
 
 }

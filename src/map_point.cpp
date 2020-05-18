@@ -9,33 +9,43 @@ namespace Simple_ORB_SLAM
 MapPoint::MapPoint(cv::Point3f pt, Frame* pF, Map* pMap)
 {
 	mWorldPos = pt;
-	
 	mnFirstFId = pF->mnId;
+	mnLastFrameSeen = 0;
 	mnObs = 0;
-
 	mbBadFlag = false;
-	
-	mnVisible = 0;
-	mnFound = 0;
-	
+	mnVisible = 1;
+	mnFound = 1;
 	mpMap = pMap;
+
+	mfMaxDistance = 0;
+	mfMinDistance = 0;
+	mNormalVector = cv::Mat::zeros(3,1,CV_32F);
+	mpRefKF = pF;
 }		
 
 MapPoint::MapPoint(cv::Point3f pt, Frame* pF, Map* pMap, size_t idx)
 {
 	mWorldPos = pt;
-
 	mnFirstFId = pF->mnId;
+	mnLastFrameSeen = 0;
 	mnObs = 0;
-
 	mbBadFlag = false;
-	
-	mnVisible = 0;
-	mnFound = 0;
+	mnVisible = 1;
+	mnFound = 1;
 	mDescriptor = pF->GetDescriptor(idx);
-	
 	mpMap = pMap;
 
+	cv::Point3f Ow = pF->GetCameraCenter();
+	cv::Point3f PC = pt - Ow;
+	mNormalVector = cv::Mat(pt-Ow);// 世界坐标系下相机到3D点的向量
+    mNormalVector = mNormalVector/cv::norm(mNormalVector);// 世界坐标系下相机到3D点的单位向量
+	const float dist = cv::norm(PC);
+    const int level = pF->mvKeysUn[idx].octave;
+    const float levelScaleFactor =  pF->mvScaleFactors[level];
+    const int nLevels = pF->mnScaleLevels;
+	mfMaxDistance = dist*levelScaleFactor;
+    mfMinDistance = mfMaxDistance/pF->mvScaleFactors[nLevels-1];
+	pF = static_cast<Frame*>(NULL);
 }
 
 
@@ -134,6 +144,9 @@ void MapPoint::EraseObservation(Frame* pF)
 	{
 		mObservations.erase(pF);
 		mnObs -= 1;
+		if(mpRefKF==pF)
+            mpRefKF=mObservations.begin()->first;
+
 	}
 	if(mnObs <= 2)
 		SetBadFlag();
@@ -207,6 +220,49 @@ cv::Mat MapPoint::GetNormal()
 {
     return mNormalVector.clone();
 }
+
+void MapPoint::UpdateNormalAndDepth()
+{
+    map<Frame*,size_t> observations;
+    Frame* pRefKF;
+    cv::Point3f Pos;
+    {
+        if(mbBadFlag)
+            return;
+
+        observations=mObservations; // 获得观测到该3d点的所有关键帧
+        pRefKF=mpRefKF;             // 观测到该点的参考关键帧
+        Pos = mWorldPos;    // 3d点在世界坐标系中的位置
+    }
+
+    if(observations.empty())
+        return;
+
+    cv::Mat normal = cv::Mat::zeros(3,1,CV_32F);
+    int n=0;
+    for(map<Frame*,size_t>::iterator mit=observations.begin(), mend=observations.end(); mit!=mend; mit++)
+    {
+        Frame* pKF = mit->first;
+        cv::Point3f Owi = pKF->GetCameraCenter();
+        cv::Point3f normali = mWorldPos - Owi;
+        normal = normal + cv::Mat(normali)/cv::norm(normali); // 对所有关键帧对该点的观测方向归一化为单位向量进行求和
+        n++;
+    } 
+
+    cv::Point3f PC = Pos - pRefKF->GetCameraCenter(); // 参考关键帧相机指向3D点的向量（在世界坐标系下的表示）
+    const float dist = cv::norm(PC); // 该点到参考关键帧相机的距离
+    const int level = pRefKF->mvKeysUn[observations[pRefKF]].octave;
+    const float levelScaleFactor =  pRefKF->mvScaleFactors[level];
+    const int nLevels = pRefKF->mnScaleLevels; // 金字塔层数
+
+    {
+        // 另见PredictScale函数前的注释
+        mfMaxDistance = dist*levelScaleFactor;                           // 观测到该点的距离最大值
+        mfMinDistance = mfMaxDistance/pRefKF->mvScaleFactors[nLevels-1]; // 观测到该点的距离最小值
+        mNormalVector = normal/n;                                        // 获得平均的观测方向
+    }
+}
+
 
 int MapPoint::PredictScale(const float &currentDist, Frame* pKF)
 {
