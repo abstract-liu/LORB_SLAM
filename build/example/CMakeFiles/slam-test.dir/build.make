@@ -60,15 +60,15 @@ include example/CMakeFiles/slam-test.dir/flags.make
 example/CMakeFiles/slam-test.dir/test.cpp.o: example/CMakeFiles/slam-test.dir/flags.make
 example/CMakeFiles/slam-test.dir/test.cpp.o: ../example/test.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/slam-test.dir/test.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/slam-test.dir/test.cpp.o -c /home/abstract/Simple-ORB-SLAM/example/test.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/slam-test.dir/test.cpp.o -c /home/abstract/Simple-ORB-SLAM/example/test.cpp
 
 example/CMakeFiles/slam-test.dir/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/slam-test.dir/test.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/example/test.cpp > CMakeFiles/slam-test.dir/test.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/example/test.cpp > CMakeFiles/slam-test.dir/test.cpp.i
 
 example/CMakeFiles/slam-test.dir/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/slam-test.dir/test.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/example/test.cpp -o CMakeFiles/slam-test.dir/test.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/example/test.cpp -o CMakeFiles/slam-test.dir/test.cpp.s
 
 example/CMakeFiles/slam-test.dir/test.cpp.o.requires:
 

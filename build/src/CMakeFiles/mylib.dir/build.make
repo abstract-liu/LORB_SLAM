@@ -60,15 +60,15 @@ include src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o: ../src/bundle_adjust.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/bundle_adjust.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/bundle_adjust.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp
 
 src/CMakeFiles/mylib.dir/bundle_adjust.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/bundle_adjust.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp > CMakeFiles/mylib.dir/bundle_adjust.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp > CMakeFiles/mylib.dir/bundle_adjust.cpp.i
 
 src/CMakeFiles/mylib.dir/bundle_adjust.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/bundle_adjust.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp -o CMakeFiles/mylib.dir/bundle_adjust.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/bundle_adjust.cpp -o CMakeFiles/mylib.dir/bundle_adjust.cpp.s
 
 src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o.requires:
 
@@ -84,15 +84,15 @@ src/CMakeFiles/mylib.dir/bundle_adjust.cpp.o.provides.build: src/CMakeFiles/myli
 src/CMakeFiles/mylib.dir/camera.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/camera.cpp.o: ../src/camera.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/mylib.dir/camera.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/camera.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/camera.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/camera.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/camera.cpp
 
 src/CMakeFiles/mylib.dir/camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/camera.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/camera.cpp > CMakeFiles/mylib.dir/camera.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/camera.cpp > CMakeFiles/mylib.dir/camera.cpp.i
 
 src/CMakeFiles/mylib.dir/camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/camera.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/camera.cpp -o CMakeFiles/mylib.dir/camera.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/camera.cpp -o CMakeFiles/mylib.dir/camera.cpp.s
 
 src/CMakeFiles/mylib.dir/camera.cpp.o.requires:
 
@@ -108,15 +108,15 @@ src/CMakeFiles/mylib.dir/camera.cpp.o.provides.build: src/CMakeFiles/mylib.dir/c
 src/CMakeFiles/mylib.dir/frame.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/frame.cpp.o: ../src/frame.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/mylib.dir/frame.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/frame.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/frame.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/frame.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/frame.cpp
 
 src/CMakeFiles/mylib.dir/frame.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/frame.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/frame.cpp > CMakeFiles/mylib.dir/frame.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/frame.cpp > CMakeFiles/mylib.dir/frame.cpp.i
 
 src/CMakeFiles/mylib.dir/frame.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/frame.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/frame.cpp -o CMakeFiles/mylib.dir/frame.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/frame.cpp -o CMakeFiles/mylib.dir/frame.cpp.s
 
 src/CMakeFiles/mylib.dir/frame.cpp.o.requires:
 
@@ -132,15 +132,15 @@ src/CMakeFiles/mylib.dir/frame.cpp.o.provides.build: src/CMakeFiles/mylib.dir/fr
 src/CMakeFiles/mylib.dir/local_mapping.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/local_mapping.cpp.o: ../src/local_mapping.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mylib.dir/local_mapping.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/local_mapping.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/local_mapping.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp
 
 src/CMakeFiles/mylib.dir/local_mapping.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/local_mapping.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp > CMakeFiles/mylib.dir/local_mapping.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp > CMakeFiles/mylib.dir/local_mapping.cpp.i
 
 src/CMakeFiles/mylib.dir/local_mapping.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/local_mapping.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp -o CMakeFiles/mylib.dir/local_mapping.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/local_mapping.cpp -o CMakeFiles/mylib.dir/local_mapping.cpp.s
 
 src/CMakeFiles/mylib.dir/local_mapping.cpp.o.requires:
 
@@ -156,15 +156,15 @@ src/CMakeFiles/mylib.dir/local_mapping.cpp.o.provides.build: src/CMakeFiles/myli
 src/CMakeFiles/mylib.dir/map.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/map.cpp.o: ../src/map.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/mylib.dir/map.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/map.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/map.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/map.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/map.cpp
 
 src/CMakeFiles/mylib.dir/map.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/map.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/map.cpp > CMakeFiles/mylib.dir/map.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/map.cpp > CMakeFiles/mylib.dir/map.cpp.i
 
 src/CMakeFiles/mylib.dir/map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/map.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/map.cpp -o CMakeFiles/mylib.dir/map.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/map.cpp -o CMakeFiles/mylib.dir/map.cpp.s
 
 src/CMakeFiles/mylib.dir/map.cpp.o.requires:
 
@@ -180,15 +180,15 @@ src/CMakeFiles/mylib.dir/map.cpp.o.provides.build: src/CMakeFiles/mylib.dir/map.
 src/CMakeFiles/mylib.dir/map_point.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/map_point.cpp.o: ../src/map_point.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/mylib.dir/map_point.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/map_point.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/map_point.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/map_point.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/map_point.cpp
 
 src/CMakeFiles/mylib.dir/map_point.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/map_point.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/map_point.cpp > CMakeFiles/mylib.dir/map_point.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/map_point.cpp > CMakeFiles/mylib.dir/map_point.cpp.i
 
 src/CMakeFiles/mylib.dir/map_point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/map_point.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/map_point.cpp -o CMakeFiles/mylib.dir/map_point.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/map_point.cpp -o CMakeFiles/mylib.dir/map_point.cpp.s
 
 src/CMakeFiles/mylib.dir/map_point.cpp.o.requires:
 
@@ -204,15 +204,15 @@ src/CMakeFiles/mylib.dir/map_point.cpp.o.provides.build: src/CMakeFiles/mylib.di
 src/CMakeFiles/mylib.dir/matcher.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/matcher.cpp.o: ../src/matcher.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/mylib.dir/matcher.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/matcher.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/matcher.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/matcher.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/matcher.cpp
 
 src/CMakeFiles/mylib.dir/matcher.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/matcher.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/matcher.cpp > CMakeFiles/mylib.dir/matcher.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/matcher.cpp > CMakeFiles/mylib.dir/matcher.cpp.i
 
 src/CMakeFiles/mylib.dir/matcher.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/matcher.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/matcher.cpp -o CMakeFiles/mylib.dir/matcher.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/matcher.cpp -o CMakeFiles/mylib.dir/matcher.cpp.s
 
 src/CMakeFiles/mylib.dir/matcher.cpp.o.requires:
 
@@ -228,15 +228,15 @@ src/CMakeFiles/mylib.dir/matcher.cpp.o.provides.build: src/CMakeFiles/mylib.dir/
 src/CMakeFiles/mylib.dir/viewer.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/viewer.cpp.o: ../src/viewer.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/mylib.dir/viewer.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/viewer.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/viewer.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/viewer.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/viewer.cpp
 
 src/CMakeFiles/mylib.dir/viewer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/viewer.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/viewer.cpp > CMakeFiles/mylib.dir/viewer.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/viewer.cpp > CMakeFiles/mylib.dir/viewer.cpp.i
 
 src/CMakeFiles/mylib.dir/viewer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/viewer.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/viewer.cpp -o CMakeFiles/mylib.dir/viewer.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/viewer.cpp -o CMakeFiles/mylib.dir/viewer.cpp.s
 
 src/CMakeFiles/mylib.dir/viewer.cpp.o.requires:
 
@@ -252,15 +252,15 @@ src/CMakeFiles/mylib.dir/viewer.cpp.o.provides.build: src/CMakeFiles/mylib.dir/v
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.o: ../src/visual_odometry.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/mylib.dir/visual_odometry.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/visual_odometry.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/visual_odometry.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp
 
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/visual_odometry.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp > CMakeFiles/mylib.dir/visual_odometry.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp > CMakeFiles/mylib.dir/visual_odometry.cpp.i
 
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/visual_odometry.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp -o CMakeFiles/mylib.dir/visual_odometry.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/visual_odometry.cpp -o CMakeFiles/mylib.dir/visual_odometry.cpp.s
 
 src/CMakeFiles/mylib.dir/visual_odometry.cpp.o.requires:
 
@@ -276,15 +276,15 @@ src/CMakeFiles/mylib.dir/visual_odometry.cpp.o.provides.build: src/CMakeFiles/my
 src/CMakeFiles/mylib.dir/ORBextractor.cpp.o: src/CMakeFiles/mylib.dir/flags.make
 src/CMakeFiles/mylib.dir/ORBextractor.cpp.o: ../src/ORBextractor.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/mylib.dir/ORBextractor.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/ORBextractor.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/ORBextractor.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/ORBextractor.cpp.o -c /home/abstract/Simple-ORB-SLAM/src/ORBextractor.cpp
 
 src/CMakeFiles/mylib.dir/ORBextractor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/ORBextractor.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/ORBextractor.cpp > CMakeFiles/mylib.dir/ORBextractor.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/src/ORBextractor.cpp > CMakeFiles/mylib.dir/ORBextractor.cpp.i
 
 src/CMakeFiles/mylib.dir/ORBextractor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/ORBextractor.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/ORBextractor.cpp -o CMakeFiles/mylib.dir/ORBextractor.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/src/ORBextractor.cpp -o CMakeFiles/mylib.dir/ORBextractor.cpp.s
 
 src/CMakeFiles/mylib.dir/ORBextractor.cpp.o.requires:
 

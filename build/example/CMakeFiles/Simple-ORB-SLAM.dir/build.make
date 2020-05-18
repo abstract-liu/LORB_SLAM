@@ -60,15 +60,15 @@ include example/CMakeFiles/Simple-ORB-SLAM.dir/flags.make
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: example/CMakeFiles/Simple-ORB-SLAM.dir/flags.make
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o: ../example/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abstract/Simple-ORB-SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o"
-	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o -c /home/abstract/Simple-ORB-SLAM/example/main.cpp
+	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o -c /home/abstract/Simple-ORB-SLAM/example/main.cpp
 
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.i"
-	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/example/main.cpp > CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.i
+	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abstract/Simple-ORB-SLAM/example/main.cpp > CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.i
 
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.s"
-	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/example/main.cpp -o CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.s
+	cd /home/abstract/Simple-ORB-SLAM/build/example && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abstract/Simple-ORB-SLAM/example/main.cpp -o CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.s
 
 example/CMakeFiles/Simple-ORB-SLAM.dir/main.cpp.o.requires:
 

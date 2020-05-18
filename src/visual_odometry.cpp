@@ -77,7 +77,7 @@ void VisualOdometry::Run(const string& timeStamp, const cv::Mat& imgLeft, const 
 void VisualOdometry::Initialize()
 {
 	
-	if(mCurrFrame->mnMapPoints < 100)
+	if(mCurrFrame->mnMapPoints < 300)
 		return;
 
 	//set pose
@@ -122,8 +122,13 @@ bool VisualOdometry::EstimatePoseMotion(Frame* pF)
 	//match points
 	size_t nMatches = Matcher::SearchByProjection(mCurrFrame, pF, 15);
 
-	if(nMatches <= 10)
-		return false;
+	if(nMatches <= 20)
+	{
+		std::fill(mCurrFrame->mvpMapPoints.begin(), mCurrFrame->mvpMapPoints.end(), static_cast<MapPoint*>(NULL));
+		nMatches = Matcher::SearchByProjection(mCurrFrame, pF, 30);
+	}
+	if(nMatches <= 20)
+		return false; 
 
 	//optimise
 	BA::ProjectPoseOptimization(mCurrFrame);
@@ -163,7 +168,7 @@ void VisualOdometry::UpdateFrame(Frame* pF)
 		if(pMP != NULL)
 			continue;
 		
-		cv::Point3f kp3d = mCurrFrame->UnprojectStereo(i);
+		cv::Point3f kp3d = pF->UnprojectStereo(i);
 		MapPoint* pNewMP = new MapPoint(kp3d, pF, mpMap, i);
 		pF->AddMapPoint(pNewMP, i);
 	}
