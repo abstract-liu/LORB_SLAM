@@ -69,7 +69,7 @@ public:
 
     cv::Point3f UnprojectStereo(const int &i);
 	std::vector<size_t> GetFeaturesInArea(const float &x, const float  &y, const float  &r, const int minLevel=-1, const int maxLevel=-1) const;
-
+	bool IsInFrustum(MapPoint *pMP, float viewingCosLimit);
 
 public:
 	static size_t Idx;
@@ -98,6 +98,10 @@ public:
     float mnMinY;
     float mnMaxY;
 
+ 	// Scale
+    const int mnScaleLevels;
+    const float mfScaleFactor;
+    const float mfLogScaleFactor;
     vector<float> mvScaleFactors;
     vector<float> mvInvScaleFactors;
     vector<float> mvLevelSigma2;

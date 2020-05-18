@@ -193,8 +193,39 @@ bool MapPoint::IsBad()
 }
 
 
+float MapPoint::GetMinDistanceInvariance()
+{
+    return 0.8f*mfMinDistance;
+}
 
+float MapPoint::GetMaxDistanceInvariance()
+{
+    return 1.2f*mfMaxDistance;
+}
 
+cv::Mat MapPoint::GetNormal()
+{
+    return mNormalVector.clone();
+}
+
+int MapPoint::PredictScale(const float &currentDist, Frame* pKF)
+{
+    float ratio;
+    {
+        // mfMaxDistance = ref_dist*levelScaleFactor为参考帧考虑上尺度后的距离
+        // ratio = mfMaxDistance/currentDist = ref_dist/cur_dist
+        ratio = mfMaxDistance/currentDist;
+    }
+
+    // 同时取log线性化
+    int nScale = ceil(log(ratio)/pKF->mfLogScaleFactor);
+    if(nScale<0)
+        nScale = 0;
+    else if(nScale>=pKF->mnScaleLevels)
+        nScale = pKF->mnScaleLevels-1;
+
+    return nScale;
+}
 
 
 }

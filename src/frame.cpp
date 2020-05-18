@@ -422,6 +422,80 @@ vector<size_t> Frame::GetFeaturesInArea(const float &x, const float  &y, const f
     return vIndices;
 }
 
+bool Frame::IsInFrustum(MapPoint *pMP, float viewingCosLimit)
+{
+    pMP->mbTrackInView = false;
+
+    // 3D in absolute coordinates
+    cv::Point3f P = pMP->GetPos(); 
+    cv::Mat PMat = (cv::Mat_<float>(4,1)<< P.x, P.y, P.z, 1);
+
+    // 3D in camera coordinates
+    // 3D点P在相机坐标系下的坐标
+    const cv::Mat Pc = mTcw*PMat; // 这里的Rt是经过初步的优化后的
+    const float &PcX = Pc.at<float>(0);
+    const float &PcY = Pc.at<float>(1);
+    const float &PcZ = Pc.at<float>(2);
+
+    // Check positive depth
+    if(PcZ<0.0f)
+        return false;
+
+    // Project in image and check it is not outside
+    // V-D 1) 将MapPoint投影到当前帧, 并判断是否在图像内
+    const float invz = 1.0f/PcZ;
+    const float u=fx*PcX*invz+cx;
+    const float v=fy*PcY*invz+cy;
+
+    if(u<mnMinX || u>mnMaxX)
+        return false;
+    if(v<mnMinY || v>mnMaxY)
+        return false;
+
+    // Check distance is in the scale invariance region of the MapPoint
+    // V-D 3) 计算MapPoint到相机中心的距离, 并判断是否在尺度变化的距离内
+    const float maxDistance = pMP->GetMaxDistanceInvariance();
+    const float minDistance = pMP->GetMinDistanceInvariance();
+    // 世界坐标系下，相机到3D点P的向量, 向量方向由相机指向3D点P
+    cv::Mat Twc = mTcw.inv();
+    cv::Point3f mOw(Twc.at<float>(0,3), Twc.at<float>(1,3), Twc.at<float>(2,3));
+    const cv::Point3f PO = P-mOw;
+    const float dist = cv::norm(PO);
+
+    if(dist<minDistance || dist>maxDistance)
+        return false;
+
+    // Check viewing angle
+    // V-D 2) 计算当前视角和平均视角夹角的余弦值, 若小于cos(60), 即夹角大于60度则返回
+    cv::Mat Pn = pMP->GetNormal();
+    cv::Point3f PnPt = cv::Point3f(Pn.at<float>(0), Pn.at<float>(1), Pn.at<float>(2));
+
+    const float viewCos = PO.dot(PnPt)/dist;
+
+    if(viewCos<viewingCosLimit)
+        return false;
+
+    // Predict scale in the image
+    // V-D 4) 根据深度预测尺度（对应特征点在一层）
+    // ！！！！通过函数调用可以发现，isInFrustum只会在Tracking.cpp中被当前mCurrentFrame调用
+    // 因此nPredictedLevel记录的是该3D点在mCurrentFrame上可能的被观测到的金字塔层数
+    const int nPredictedLevel = pMP->PredictScale(dist,this);
+
+    // Data used by the tracking
+    // 标记该点将来要被投影
+    pMP->mbTrackInView = true;
+    pMP->mTrackProjX = u;
+    pMP->mTrackProjXR = u - mbf*invz; //该3D点投影到双目右侧相机上的横坐标
+    pMP->mTrackProjY = v;
+    pMP->mnTrackScaleLevel = nPredictedLevel;
+    pMP->mTrackViewCos = viewCos;
+
+    return true;
+}
+
+
+
+
 
 
 

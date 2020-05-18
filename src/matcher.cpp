@@ -217,6 +217,104 @@ size_t Matcher::SearchByProjection(Frame* CurrentFrame, Frame* LastFrame, const 
     return nmatches;
 }
 
+size_t Matcher::SearchByProjection(Frame* F, const std::set<MapPoint*> &vpMapPoints, const float th)
+{
+    int nmatches=0;
+
+    const bool bFactor = th!=1.0;
+
+    for(std::set<MapPoint*>::iterator it = vpMapPoints.begin(); it != vpMapPoints.end(); it++)
+    {
+        MapPoint* pMP = *it;
+
+        // 判断该点是否要投影
+        if(!pMP->mbTrackInView)
+            continue;
+
+        if(pMP->IsBad())
+            continue;
+            
+        // step1：通过距离预测特征点所在的金字塔层数
+        const int &nPredictedLevel = pMP->mnTrackScaleLevel;
+
+        // The size of the window will depend on the viewing direction
+        // step2：根据观测到该3D点的视角确定搜索窗口的大小, 若相机正对这该3D点则r取一个较小的值（mTrackViewCos>0.998?2.5:4.0）
+        float r = RadiusByViewingCos(pMP->mTrackViewCos);
+        
+        if(bFactor)
+            r*=th;
+
+        // (pMP->mTrackProjX, pMP->mTrackProjY)：图像特征点坐标
+        // r*F.mvScaleFactors[nPredictedLevel]：搜索范围
+        // nPredictedLevel-1：miniLevel
+        // nPredictedLevel：maxLevel
+        // step3：在2D投影点附近一定范围内搜索属于miniLevel~maxLevel层的特征点 ---> vIndices
+        const vector<size_t> vIndices =
+                F->GetFeaturesInArea(pMP->mTrackProjX,pMP->mTrackProjY,r*F->mvScaleFactors[nPredictedLevel],nPredictedLevel-1,nPredictedLevel);
+
+        if(vIndices.empty())
+            continue;
+
+        const cv::Mat MPdescriptor = pMP->GetDescriptor();
+
+        int bestDist=256;
+        int bestLevel= -1;
+        int bestDist2=256;
+        int bestLevel2 = -1;
+        int bestIdx =-1 ;
+
+        // Get best and second matches with near keypoints
+        // step4：在vIndices内找到最佳匹配与次佳匹配，如果最优匹配误差小于阈值，且最优匹配明显优于次优匹配，则匹配3D点-2D特征点匹配关联成功
+        for(vector<size_t>::const_iterator vit=vIndices.begin(), vend=vIndices.end(); vit!=vend; vit++)
+        {
+            const size_t idx = *vit;
+
+            // 如果Frame中的该兴趣点已经有对应的MapPoint了，则退出该次循环
+            if(F->mvpMapPoints[idx])
+                if(F->mvpMapPoints[idx]->mnObs>0)
+                    continue;
+
+            if(F->mvuRight[idx]>0)
+            {
+                const float er = fabs(pMP->mTrackProjXR-F->mvuRight[idx]);
+                if(er>r*F->mvScaleFactors[nPredictedLevel])
+                    continue;
+            }
+
+            const cv::Mat &d = F->GetDescriptor(idx);
+
+            const int dist = DescriptorDistance(MPdescriptor,d);
+            
+            // 记录最优匹配和次优匹配
+            if(dist<bestDist)
+            {
+                bestDist2=bestDist;
+                bestDist=dist;
+                bestLevel2 = bestLevel;
+                bestLevel = F->mvKeysUn[idx].octave;
+                bestIdx=idx;
+            }
+            else if(dist<bestDist2)
+            {
+                bestLevel2 = F->mvKeysUn[idx].octave;
+                bestDist2=dist;
+            }
+        }
+
+        // Apply ratio to second match (only if best and second are in the same scale level)
+        if(bestDist<=TH_HIGH)
+        {
+            if(bestLevel==bestLevel2 && bestDist>0.8*bestDist2)
+                continue;
+
+            F->mvpMapPoints[bestIdx]=pMP; // 为Frame中的兴趣点增加对应的MapPoint
+            nmatches++;
+        }
+    }
+
+    return nmatches;
+}
+
 
 size_t Matcher::SearchLocalPoints(Frame* currFrame, std::set<MapPoint*> vpMPs)
 {
@@ -329,5 +427,12 @@ void Matcher::ComputeThreeMaxima(vector<int>* histo, const int L, int &ind1, int
     }
 }
 
+float Matcher::RadiusByViewingCos(const float &viewCos)
+{
+    if(viewCos>0.998)
+        return 2.5;
+    else
+        return 4.0;
+}
 
 }

@@ -43,12 +43,32 @@ public:
 	bool IsBad();
 	void SetBadFlag();
 	
-
-
+	float GetMinDistanceInvariance();
+	float GetMaxDistanceInvariance();
+	cv::Mat GetNormal();
+	int PredictScale(const float &currentDist, Frame* pKF);
 
 public:
 	size_t mnObs;
 	size_t mnFirstFId;
+	
+	// Variables used by the tracking
+    float mTrackProjX;
+    float mTrackProjY;
+    float mTrackProjXR;
+    int mnTrackScaleLevel;
+    float mTrackViewCos;
+    // TrackLocalMap - SearchByProjection中决定是否对该点进行投影的变量
+    // mbTrackInView==false的点有几种：
+    // a 已经和当前帧经过匹配（TrackReferenceKeyFrame，TrackWithMotionModel）但在优化过程中认为是外点
+    // b 已经和当前帧经过匹配且为内点，这类点也不需要再进行投影
+    // c 不在当前相机视野中的点（即未通过isInFrustum判断）
+    bool mbTrackInView;
+	size_t mnLastFrameSeen;
+	float mfMinDistance, mfMaxDistance;
+	// Mean viewing direction
+    // 该MapPoint平均观测方向
+    cv::Mat mNormalVector;
 
 
 private:

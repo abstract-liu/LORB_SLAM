@@ -59,7 +59,7 @@ void VisualOdometry::Run(const string& timeStamp, const cv::Mat& imgLeft, const 
 		cout << "---- reference frame fail" << endl;
 	}
 	
-	//tag = EstimatePoseLocal();	
+	tag = EstimatePoseLocal();	
 
 	//update pose and velocity
 	mTcc = mPrevFrame->GetInvPose() * mCurrFrame->GetPose();
@@ -145,9 +145,62 @@ bool VisualOdometry::EstimatePoseLocal()
 	UpdateLocalMap();
 
 	//step 2
-	size_t nMatches = Matcher::SearchLocalPoints(mCurrFrame, mpLocalMapPoints);
-	
-	if(nMatches <= 10)
+	// Do not search map points already matched
+    // 步骤1：遍历当前帧的mvpMapPoints，标记这些MapPoints不参与之后的搜索
+    // 因为当前的mvpMapPoints一定在当前帧的视野中
+    for(vector<MapPoint*>::iterator vit=mCurrFrame->mvpMapPoints.begin(); vit!=mCurrFrame->mvpMapPoints.end(); vit++)
+    {
+        MapPoint* pMP = *vit;
+        if(pMP)
+        {
+            if(pMP->IsBad())
+            {
+                *vit = static_cast<MapPoint*>(NULL);
+            }
+            else
+            {
+                // 更新能观测到该点的帧数加1
+                pMP->IncreaseVisible();
+				pMP->mnLastFrameSeen = mCurrFrame->mnId;
+                // 标记该点将来不被投影，因为已经匹配过
+                pMP->mbTrackInView = false;
+            }
+        }
+    }
+
+    int nToMatch=0;
+
+    // Project points in frame and check its visibility
+    // 步骤2：将所有局部MapPoints投影到当前帧，判断是否在视野范围内，然后进行投影匹配
+    for(std::set<MapPoint*>::iterator vit=mpLocalMapPoints.begin(); vit!=mpLocalMapPoints.end(); vit++)
+    {
+        MapPoint* pMP = *vit;
+
+        // 已经被当前帧观测到MapPoint不再判断是否能被当前帧观测到
+        if(pMP->mnLastFrameSeen == mCurrFrame->mnId)
+            continue;
+        if(pMP->IsBad())
+            continue;
+        
+        // Project (this fills MapPoint variables for matching)
+        // 步骤2.1：判断LocalMapPoints中的点是否在在视野内
+        if(mCurrFrame->IsInFrustum(pMP,0.5))
+        {
+        	// 观测到该点的帧数加1，该MapPoint在某些帧的视野范围内
+            pMP->IncreaseVisible();
+            // 只有在视野范围内的MapPoints才参与之后的投影匹配
+            nToMatch++;
+        }
+    }
+
+	size_t nMatches = 0;
+    if(nToMatch>0)
+    {
+        // 步骤2.2：对视野范围内的MapPoints通过投影进行特征点匹配
+        nMatches = Matcher::SearchByProjection(mCurrFrame,mpLocalMapPoints,1);
+    }
+
+	if(nMatches <= 20)
 		return false;
 
 	BA::ProjectPoseOptimization(mCurrFrame);
