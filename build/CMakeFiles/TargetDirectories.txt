@@ -1,9 +1,0 @@
-/home/abstract/Simple-ORB-SLAM/build/CMakeFiles/rebuild_cache.dir
-/home/abstract/Simple-ORB-SLAM/build/CMakeFiles/edit_cache.dir
-/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/rebuild_cache.dir
-/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/mylib.dir
-/home/abstract/Simple-ORB-SLAM/build/src/CMakeFiles/edit_cache.dir
-/home/abstract/Simple-ORB-SLAM/build/example/CMakeFiles/rebuild_cache.dir
-/home/abstract/Simple-ORB-SLAM/build/example/CMakeFiles/Simple-ORB-SLAM.dir
-/home/abstract/Simple-ORB-SLAM/build/example/CMakeFiles/edit_cache.dir
-/home/abstract/Simple-ORB-SLAM/build/example/CMakeFiles/slam-test.dir
